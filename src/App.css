@@ -1,38 +1,30 @@
-.App {
-  text-align: center;
+/* Global Font Imports */
+@font-face {
+    font-family: Regular;
+    src: url(./Fonts/Moderat-Regular.ttf);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+    font-family: Bold;
+    src: url(./Fonts/Moderat-Bold.ttf);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body{
+    background-color: #1C1D23;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+*{
+    margin: 0;
 }
 
-.App-link {
-  color: #61dafb;
+p, h1, h2, h3, h4, h5, h6{
+    font-family: Regular;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#app{
+    display: flex;
+}
+
+#mainContent{
+    width: 100%;
 }

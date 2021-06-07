@@ -1,0 +1,140 @@
+#sidebar{
+    margin-right: 50px;
+
+}
+
+#sidebarSide{
+    width: 290px;
+    border-right: solid rgba(255, 255, 255, 0.03) 1px;
+    height: 100vh;
+    display: block;
+    position: sticky;
+    top: 0;
+}
+
+#sidebuttonsContainer{
+    padding-left: 35px;
+    padding-top: 100px;
+    transition: all 0.03s;
+}
+
+.sideButton{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: fit-content;
+    transition: all 0.08s;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(169deg) brightness(108%) contrast(104%);
+    margin-bottom: 40px;
+}
+
+.sideButtonsSection{
+    margin-bottom: 125px;
+}
+
+.sideButton:hover{
+    filter: invert(97%) sepia(44%) saturate(1276%) hue-rotate(62deg) brightness(90%) contrast(85%);
+}
+
+.sideButtonActive{
+    filter: invert(97%) sepia(44%) saturate(1276%) hue-rotate(62deg) brightness(90%) contrast(85%);
+}
+
+.sideButtonIcon{
+    width: 25px;
+    height: 25px;
+}
+
+.sideButtonText{
+    margin-left: 40px;
+    font-size: 18px;
+    display: block;
+}
+
+#sidebarBottom{
+    display: none;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    height: fit-content;
+    background-color: #1C1D23;
+    border-top: solid rgba(255, 255, 255, 0.03) 1px;
+    text-align: center;
+}
+
+#optionButtonContainer{
+    position: fixed;
+    bottom: 0;
+}
+
+@media only screen and (max-width: 850px) {
+    #sidebarSide{
+        display: none;
+    }
+
+    #sidebarBottom{
+        display: inline-block;
+    }
+
+    .sideButton{
+        margin-bottom: 5px;
+        margin-top: 5px;
+        display: inline-block;
+    }
+
+    .sideButton:not(:last-child){
+        margin-right: 8vw;
+    }
+
+    .sideButtonText{
+        margin-left: 0px;
+        font-size: 18px;
+        display: block;
+    }
+
+    #sidebar{
+        margin-right: 0;
+    }
+    
+
+    .sideButtonIcon{
+        width: 35px;
+        height: 45px;
+    }
+
+    #sidebuttonsContainer{
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-height: 600px) {
+    .sideButtonsSection{
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    #sidebarSide{
+        width: 220px;
+    }
+}
+
+@media only screen and (max-width: 1000px){
+    .sideButtonText{
+        display: none;
+    }
+
+    #sidebarSide{
+        width: fit-content;
+    }
+
+    #sidebuttonsContainer{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
