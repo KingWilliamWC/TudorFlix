@@ -70,7 +70,7 @@ class Sidebar extends Component {
                         <div id='optionButtonContainer'>
                             <div className='sideButton'>
                                     <img className='sideButtonIcon' alt='' src={OptionSVG}></img>
-                                    <p className='sideButtonText'>Options</p>
+                                    <p className='sideButtonText'>Settings</p>
                             </div>
                         </div>
                     </div>

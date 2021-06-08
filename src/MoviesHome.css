@@ -147,12 +147,16 @@
     border-radius: 10px;
 }
 
-@media only screen and (max-width: 850px){
-    #moviesContainer{
-        padding-right: 10px;
-        padding-left: 10px;
-    }
+#featuredButtonsContainer{
+    display: flex;
+    margin-left: auto;
 }
+
+
+
+
+
+
 
 @media only screen and (max-width: 1400px) {
     #featuredMoviesContainer{
@@ -164,15 +168,91 @@
     }
 
     .sideFeaturedMovieImg{
-        width: 49%;
+        width: 48.5%;
     }
 
     .sideFeaturedMovieImg{
-        margin-right: 20px;
+        margin-right: 0px;
+    }
+
+    #sideFeaturedMovies .sideFeaturedMovieImg:not(:last-child){
+        margin-right: 28px;
     }
 
     #sideFeaturedMovies{
         margin-top: -120px;
         display: flex;
+    }
+}
+
+@media only screen and (max-width: 850px){
+    #moviesContainer{
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    #sideFeaturedMovies .sideFeaturedMovieImg:not(:last-child){
+        margin-right: 18px;
+    }
+}
+
+@media only screen and (max-width: 650px){
+    #featuredMovieDescriptionContainer{
+        height: 170px;
+        bottom: 170px;
+    }
+
+    #FeaturedMovieDescription{
+        width: 340px;
+    }
+
+    #featuredMovieTitle{
+        margin-right: 40px;
+    }
+
+    #sideFeaturedMovies{
+        margin-top: -140px;
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 550px){
+    #FeaturedContent{
+        padding-bottom: 10px;
+    }
+
+    #bottomDescription{
+        display: block;
+    }
+
+    #featuredMovieTitle{
+        margin-right: 20px;
+    }
+
+    #featuredMovieDescriptionContainer{
+        height: 210px;
+        bottom: 210px;
+    }
+
+    #FeaturedContent{
+        display: block;
+    }
+
+    #sideFeaturedMovies{
+        margin-top: -200px;
+    }
+
+    #featuredLikeButton{
+        margin-left: 0;
+    }
+
+    #featuredButtonsContainer{
+        display: flex;
+        margin-left: 0;
+        padding-top: 10px;
+    }
+
+    #FeaturedMovieDescription{
+        width: 92%;
     }
 }

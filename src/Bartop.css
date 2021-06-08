@@ -1,5 +1,5 @@
 #bartop{
-    padding-top: 30px;
+    padding-top: 20px;
     width: 100%;
     height: fit-content;
     display: flex;
@@ -95,7 +95,7 @@
     }
 
     #contentSelector{
-        padding-left: 10px;
+        display: none;
     }
 }
 
@@ -106,5 +106,11 @@
 
     #searchBox{
         width: 250px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    #searchBox{
+        width: 190px;
     }
 }

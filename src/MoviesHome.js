@@ -36,14 +36,16 @@ class MoviesHome extends Component {
                                         involved in an interstellar voyage
                                         </p>
                                     </div>
+                                    <div id='featuredButtonsContainer'>
+                                        <div id='featuredLikeButton'>
+                                            <img alt='' src={HeartSVG}></img>
+                                        </div>
+                                        <div id='featuredWatchButton'>
+                                            <p>Watch</p>
+                                            <img alt='' src={PlaySVG}></img>
+                                        </div>
+                                    </div>
 
-                                    <div id='featuredLikeButton'>
-                                        <img alt='' src={HeartSVG}></img>
-                                    </div>
-                                    <div id='featuredWatchButton'>
-                                        <p>Watch</p>
-                                        <img alt='' src={PlaySVG}></img>
-                                    </div>
                                 </div>
                             </div>
                         </div>
