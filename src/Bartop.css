@@ -89,6 +89,16 @@
     height: 40px;
 }
 
+@media only screen and (max-width: 850px) {
+    #userContainer{
+        padding-right: 10px;
+    }
+
+    #contentSelector{
+        padding-left: 10px;
+    }
+}
+
 @media only screen and (max-width: 1400px) {
     #contentSelector{
         margin-right: 20px;

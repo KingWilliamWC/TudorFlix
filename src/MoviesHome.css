@@ -16,7 +16,7 @@
 }
 
 #featuredMovie{
-    min-width: 65%;
+    min-width: 66%;
     margin-right: 25px;
 }
 
@@ -127,11 +127,52 @@
     filter: invert(17%) sepia(8%) saturate(711%) hue-rotate(195deg) brightness(91%) contrast(92%);
 }
 
+#featuredLikeButton, #featuredWatchButton{
+    transition: all 0.2s ease;
+}
+
+#featuredLikeButton:hover, #featuredWatchButton:hover{
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
 #sideFeaturedMovies{
     width: fit-content;
+    height: fit-content;
 }
 
 .sideFeaturedMovieImg{
-    height: 37%;
-    width: 100%;
+    margin-bottom: 20px;
+    object-fit: cover;
+    width: 97.9%;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 850px){
+    #moviesContainer{
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    #featuredMoviesContainer{
+        display: block;
+    }
+
+    #featuredMovie{
+        margin-right: 0;
+    }
+
+    .sideFeaturedMovieImg{
+        width: 49%;
+    }
+
+    .sideFeaturedMovieImg{
+        margin-right: 20px;
+    }
+
+    #sideFeaturedMovies{
+        margin-top: -120px;
+        display: flex;
+    }
 }
