@@ -50,8 +50,20 @@ class MoviesHome extends Component {
                             </div>
                         </div>
                         <div id='sideFeaturedMovies'>
-                            <img className='sideFeaturedMovieImg' alt='' src='https://image.tmdb.org/t/p/original//6MKr3KgOLmzOP6MSuZERO41Lpkt.jpg'></img>
-                            <img className='sideFeaturedMovieImg' alt='' src='https://image.tmdb.org/t/p/original//6MKr3KgOLmzOP6MSuZERO41Lpkt.jpg'></img>
+                            <div className='sideFeaturedMovie'>
+                                <img className='sideFeaturedMovieImg' alt='' src='https://image.tmdb.org/t/p/original//6MKr3KgOLmzOP6MSuZERO41Lpkt.jpg'></img>
+                                <div className='SideFeatureMovieOverlayContainer'>
+                                    <p className='SideFeaturedMovieTitle'>Godzilla Vs. Kong</p>
+                                    <p>Adventure</p>
+                                </div>
+                            </div>
+                            <div className='sideFeaturedMovie'>
+                                <img className='sideFeaturedMovieImg' alt='' src='https://image.tmdb.org/t/p/original//6MKr3KgOLmzOP6MSuZERO41Lpkt.jpg'></img>
+                                <div className='SideFeatureMovieOverlayContainer'>
+                                    <p className='SideFeaturedMovieTitle'>Godzilla Vs. Kong</p>
+                                    <p>Adventure</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

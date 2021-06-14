@@ -136,9 +136,4 @@
     #sidebarSide{
         width: fit-content;
     }
-
-    #sidebuttonsContainer{
-        padding-left: 20px;
-        padding-right: 20px;
-    }
 }
