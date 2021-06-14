@@ -1,0 +1,27 @@
+{
+  "name": "tudorflixserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KingWilliamWC/TudorFlix.git"
+  },
+  "author": "William Wolseley-Charles",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KingWilliamWC/TudorFlix/issues"
+  },
+  "homepage": "https://github.com/KingWilliamWC/TudorFlix#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "debug": "^4.3.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "morgan": "^1.10.0"
+  }
+}
