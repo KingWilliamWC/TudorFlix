@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import './MoviesHome.css';
 
@@ -7,6 +8,19 @@ import HeartSVG from './SVG/Heart-Solid.svg';
 import PlaySVG from './SVG/Play-Solid.svg';
 
 class MoviesHome extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            data: null
+        };
+    }
+    componentWillMount() {
+        this.requestData();
+    }
+
+    requestData(){
+        axios.get('http://localhost/api/home/')
+    }
     render(){
         return(
             <div id='moviesContainer'>
