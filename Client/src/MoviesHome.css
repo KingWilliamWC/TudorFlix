@@ -18,6 +18,7 @@
 #featuredMovie{
     min-width: 66%;
     margin-right: 25px;
+    overflow: hidden;
 }
 
 #featuredMovieImage{
@@ -29,7 +30,7 @@
 #featuredMovieDescriptionContainer{
     position: relative;
     height: 150px;
-    bottom: 150px;
+    bottom: 154px;
     border-radius: 10px;
     background-color: #2e2f36e7;
     width: 100%;
@@ -49,12 +50,13 @@
     font-size: 25px;
     color: white;
     font-weight: Bold;
-    margin-right: 150px;
 }
 
 #feauturedMovieMetricsContainer{
     display: flex;
     align-items: center;
+    margin-left: auto;
+    margin-right: 20px;
 }
 
 #featuredSeperator{
@@ -82,6 +84,11 @@
     width: 450px;
     font-size: 14px;
     color: rgba(255, 255, 255, 0.199);
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    text-overflow: ellipsis;
 }
 
 #featuredLikeButton{
@@ -142,14 +149,16 @@
 }
 
 .sideFeaturedMovie{
-    width: 98%;
+    width: 100%;
     transition: all 0.3s;
     position: relative;
+    cursor: pointer;
+    margin-bottom: 14px;
 }
 
-.sideFeaturedMovie:hover .sideFeaturedMovieImg {
-    /* filter: blur(2px); */
-}
+/* #featuredMovieImage:hover{
+    transform: scaleX(1.2);
+} */
 
 .sideFeaturedMovie:hover .SideFeatureMovieOverlayContainer{
     background-color: #2e2f36e7;
@@ -158,8 +167,8 @@
 }
 
 .sideFeaturedMovieImg{
-    margin-bottom: 20px;
     object-fit: cover;
+    transition: all 0.3s ease;
     width: 100%;
     height: 100%;
     border-radius: 10px;
@@ -174,8 +183,8 @@
 .SideFeatureMovieOverlayContainer{
     position: absolute;
     background-color: #2e2f3600;
-    height: calc(100% - 23px);
-    top: 0;
+    height: 99.5%;
+    top: -1px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -186,20 +195,54 @@
 }
 
 .SideFeaturedMovieTitle{
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    position: absolute;
-    top: 20%;
-    text-align: center;
-    left: 50%;
-    transform: translate(-50% , -50%);
-    -webkit-transform: translate(-50%, -50%);
-    font-size: 28px;
+    font-size: 180%;
+    padding-bottom: 10px;
     font-weight: Bold;
+    margin-top: 10px;
+    width: 70%;
+    margin: 0 auto;
 }
 
+.sideGenreContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
 
+.seperator-side{
+    height: 6px;
+    width: 6px;
+    margin-left: 10px;
+    margin-right: 10px;
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(192deg) brightness(124%) contrast(104%);
+}
+
+.rowsContainer{
+    margin-top: -120px;
+}
+
+.SideFeatureMovieOverlayContainerContent{
+    position: relative;
+    text-align: center;
+    padding-top: 10px;
+}
+@media only screen and (max-width: 1720px){
+    #FeaturedContent{
+        display: block;
+        padding-bottom: 15px;
+    }
+
+    #featuredMovieDescriptionContainer{
+        height: 185px;
+        bottom: 189px;
+    }
+
+    #feauturedMovieMetricsContainer{
+        margin-top: 10px;
+    }
+}
 
 
 @media only screen and (max-width: 1400px) {
@@ -209,6 +252,7 @@
 
     #featuredMovie{
         margin-right: 0;
+        width: 100%;
     }
 
     .sideFeaturedMovieImg{
@@ -220,8 +264,12 @@
     }
 
     #sideFeaturedMovies{
-        margin-top: -120px;
+        margin-top: -170px;
         display: flex;
+    }
+
+    .SideFeatureMovieOverlayContainer{
+        height: 100.5%;
     }
 }
 
@@ -269,13 +317,13 @@
         margin-right: 20px;
     }
 
-    #featuredMovieDescriptionContainer{
-        height: 185px;
-        bottom: 185px;
+    #FeaturedMovieDescription{
+        width: 95%;
     }
 
-    #FeaturedContent{
-        display: block;
+    #featuredMovieDescriptionContainer{
+        height: 230px;
+        bottom: 230px;
     }
 
     #sideFeaturedMovies{
@@ -288,15 +336,7 @@
 
     #featuredButtonsContainer{
         display: flex;
-        margin-left: 0;
+        margin-left: auto;
         padding-top: 10px;
-    }
-
-    #FeaturedMovieDescription{
-        overflow: hidden;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        display: -webkit-box;
-        text-overflow: ellipsis;
     }
 }

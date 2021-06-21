@@ -1,0 +1,50 @@
+.rowTopContainer{
+    display: flex;
+    align-items: baseline;
+}
+
+.buttonSlideContainer{
+    display: flex;
+    margin-left: auto;
+}
+
+.buttonSlideContainer > .ButtonSlide{
+    margin-right: 20px;
+}
+
+.ButtonSlide{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background-color: rgb(122, 213, 5);
+}
+
+.movieRowTitle{
+    color: white;
+    font-family: Bold;
+    font-size: 23px;
+    margin-bottom: 25px;
+}
+
+.moviesRowSliderContainer{
+    display: flex;
+    overflow-x: hidden;
+    width: 100%;
+    scroll-behavior: smooth;
+}
+
+.sliderItem{
+    width: 15%;
+    height: auto;
+    flex:none;
+}
+
+.sliderItem:not(:first-child){
+    margin-left: 50px;
+}
+
+.sliderImg{
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}

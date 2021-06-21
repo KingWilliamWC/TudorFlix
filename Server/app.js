@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var cors = require('cors');
 // var logger = require('morgan');
 
 var frontRouter = require('./routes/index');
@@ -13,6 +14,7 @@ app.set('view engine', 'html');
 
 // app.use(logger('tiny'));
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'build')));
