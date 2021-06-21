@@ -7,10 +7,12 @@ class MoviesRow extends Component {
         super(props);
         this.state = {
             currentScrollPos: 0,
+            MovieItems: [],
         }
     }
     componentDidMount() {
-        console.log(this.state.movies)
+        var f = this.props;
+        console.log(f);
     }
 
     HandleSlide(sender){
@@ -24,6 +26,13 @@ class MoviesRow extends Component {
     }
     
     render(){
+        for(var i = 0; i < this.props.movies.length; i++){
+            this.state.MovieItems.push(
+                <div className='sliderItem'>
+                        <img className='sliderImg' src={`https://image.tmdb.org/t/p/w1280/${this.props.movies[i].poster_path}`} alt=''></img>
+                </div>
+            )
+        }
         return(
             <div className='movieRowContainer'>
                 <div className='rowTopContainer'>
@@ -37,24 +46,7 @@ class MoviesRow extends Component {
                 </div>
                 
                 <div className='moviesRowSliderContainer'>
-                    <div className='sliderItem'>
-                        <img className='sliderImg' src={`https://image.tmdb.org/t/p/w1280/rTh4K5uw9HypmpGslcKd4QfHl93.jpg`} alt=''></img>
-                    </div>
-                    <div className='sliderItem'>
-                        <img className='sliderImg' src={`https://image.tmdb.org/t/p/w1280/rTh4K5uw9HypmpGslcKd4QfHl93.jpg`} alt=''></img>
-                    </div>
-                    <div className='sliderItem'>
-                        <img className='sliderImg' src={`https://image.tmdb.org/t/p/w1280/rTh4K5uw9HypmpGslcKd4QfHl93.jpg`} alt=''></img>
-                    </div>
-                    <div className='sliderItem'>
-                        <img className='sliderImg' src={`https://image.tmdb.org/t/p/w1280/rTh4K5uw9HypmpGslcKd4QfHl93.jpg`} alt=''></img>
-                    </div>
-                    <div className='sliderItem'>
-                        <img className='sliderImg' src={`https://image.tmdb.org/t/p/w1280/rTh4K5uw9HypmpGslcKd4QfHl93.jpg`} alt=''></img>
-                    </div>
-                    <div className='sliderItem'>
-                        <img className='sliderImg' src={`https://image.tmdb.org/t/p/w1280/rTh4K5uw9HypmpGslcKd4QfHl93.jpg`} alt=''></img>
-                    </div>
+                    {this.state.MovieItems ? this.state.MovieItems : ''}
                 </div>
             </div>
         )

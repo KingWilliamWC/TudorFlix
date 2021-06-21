@@ -271,6 +271,11 @@
     .SideFeatureMovieOverlayContainer{
         height: 100.5%;
     }
+
+    .rowsContainer{
+        margin-top: 0;
+        margin-bottom: 100px;
+    }
 }
 
 @media only screen and (max-width: 850px){

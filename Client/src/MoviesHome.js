@@ -17,14 +17,24 @@ class MoviesHome extends Component {
             data: null,
             FeaturedMovie: '',
             SideMovies: ['', ''],
+            Trending: null,
         };
+
+        this.functions = {
+            requestTrending: this.callbackAfterRequest(),
+        }
     }
     componentWillMount() {
         this.requestData();
     }
 
+    callbackAfterRequest = () => {
+        
+        return(this.state.Trending ? this.state.Trending : '')
+    }
+
     async requestData(){
-        await axios.get('http://localhost/api/home/')
+        await axios.get('https://52.151.90.27/api/home/')
             .then(res => {
                 const data = res.data;
                 console.log(data);
@@ -111,9 +121,9 @@ class MoviesHome extends Component {
                     </div>
                 </div>
                 <div className='rowsContainer'>
-                    <MoviesRow movies={this.state.Trending}/>
+                    {this.state.Trending != null ? <MoviesRow movies={this.state.Trending}/> : ''}
+                    
                 </div>
-                
             </div>
         )
     }
