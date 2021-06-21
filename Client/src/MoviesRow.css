@@ -3,20 +3,28 @@
     align-items: baseline;
 }
 
+.ArrowButtonImage{
+    filter: invert(65%) sepia(5%) saturate(170%) hue-rotate(169deg) brightness(84%) contrast(82%);
+}
+
+.flippedArrow{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
 .buttonSlideContainer{
     display: flex;
     margin-left: auto;
 }
 
-.buttonSlideContainer > .ButtonSlide{
-    margin-right: 20px;
+.ButtonSlide:first-child{
+    margin-right: 35px;
 }
 
 .ButtonSlide{
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 25px;
     cursor: pointer;
-    background-color: rgb(122, 213, 5);
 }
 
 .movieRowTitle{
@@ -34,7 +42,7 @@
 }
 
 .sliderItem{
-    width: 15%;
+    width: 16%;
     height: auto;
     flex:none;
 }

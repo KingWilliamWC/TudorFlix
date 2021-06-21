@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 
 import './MoviesRow.css';
 
+import ArrowSVG from './SVG/Arrow-Solid.svg';
+
 class MoviesRow extends Component {
     constructor(props){
         super(props);
         this.state = {
-            currentScrollPos: 0,
             MovieItems: [],
         }
     }
@@ -19,9 +20,9 @@ class MoviesRow extends Component {
         // console.log(sender);
         var f = document.getElementsByClassName('moviesRowSliderContainer')
         if(sender === 'right'){
-            f[0].scrollLeft += 300;
+            f[0].scrollLeft += 350;
         }else if(sender === 'left'){
-            f[0].scrollLeft -= 300;
+            f[0].scrollLeft -= 350;
         }
     }
     
@@ -40,8 +41,8 @@ class MoviesRow extends Component {
                         <p className='movieRowTitle'>For You</p>
                     </div>
                     <div className='buttonSlideContainer'>
-                        <div onClick={() => this.HandleSlide('left')} className='ButtonSlide'></div>
-                        <div onClick={() => this.HandleSlide('right')} className='ButtonSlide'></div>
+                        <div onClick={() => this.HandleSlide('left')} className='ButtonSlide'><img className='flippedArrow ArrowButtonImage' src={ArrowSVG}></img></div>
+                        <div onClick={() => this.HandleSlide('right')} className='ButtonSlide'><img className='ArrowButtonImage' src={ArrowSVG}></img></div>
                     </div>
                 </div>
                 
