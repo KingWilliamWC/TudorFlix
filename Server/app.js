@@ -15,6 +15,7 @@ app.set('view engine', 'html');
 // app.use(logger('tiny'));
 app.use(express.json());
 app.use(cors());
+app.options('*', cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'build')));

@@ -7,9 +7,11 @@
     width: 290px;
     border-right: solid rgba(255, 255, 255, 0.03) 1px;
     height: 100vh;
-    display: block;
-    position: sticky;
+    display: inline-block;
+    position: fixed;
+    z-index: 10;
     top: 0;
+    left: 0;
 }
 
 #sidebuttonsContainer{
@@ -135,5 +137,9 @@
 
     #sidebarSide{
         width: fit-content;
+    }
+
+    #sidebuttonsContainer{
+        padding-right: 20px;
     }
 }

@@ -121,8 +121,10 @@ class MoviesHome extends Component {
                     </div>
                 </div>
                 <div className='rowsContainer'>
-                    {this.state.Trending != null ? <MoviesRow movies={this.state.Trending}/> : ''}
-                    
+                    <div className='rowContent'>
+                        {this.state.Trending != null ? <MoviesRow name={'For You'} index={0} movies={this.state.Trending}/> : ''}
+                        {this.state.Trending != null ? <MoviesRow name={'Trending'} index={1} movies={this.state.Trending}/> : ''}
+                    </div>
                 </div>
             </div>
         )

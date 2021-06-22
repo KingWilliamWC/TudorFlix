@@ -27,11 +27,28 @@
     cursor: pointer;
 }
 
+.movieRowTitleContainer{
+    margin-right: 20px;
+}
+
 .movieRowTitle{
     color: white;
     font-family: Bold;
     font-size: 23px;
     margin-bottom: 25px;
+}
+
+.viewAllButtonContainer {
+    cursor: pointer;
+}
+
+.viewAllButtonContainer:hover p {
+    text-decoration: underline;
+}
+
+.viewAllButtonContainer p {
+    color: white;
+    font-size: 0.9em;
 }
 
 .moviesRowSliderContainer{
@@ -55,4 +72,23 @@
     width: 100%;
     height: auto;
     border-radius: 5px;
+}
+
+
+@media only screen and (max-width: 1400px) {
+    .sliderItem:not(:first-child){
+        margin-left: 35px;
+    }
+    .sliderItem{
+        width: 18%;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .sliderItem:not(:first-child){
+        margin-left: 25px;
+    }
+    .sliderItem{
+        width: 29%;
+    }
 }

@@ -31,4 +31,23 @@ p, h1, h2, h3, h4, h5, h6{
 
 #mainContent{
     width: 100%;
+    padding-left: 290px;
+}
+
+@media only screen and (max-width: 1100px) {
+    #mainContent{
+        padding-left: 220px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    #mainContent{
+        padding-left: 65px;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    #mainContent{
+        padding-left: 0px;
+    }
 }

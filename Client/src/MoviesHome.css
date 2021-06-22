@@ -161,7 +161,7 @@
 } */
 
 .sideFeaturedMovie:hover .SideFeatureMovieOverlayContainer{
-    background-color: #2e2f36e7;
+    background-color: #000000ad;
     color: rgb(255, 255, 255);
     opacity: 1;
 }
@@ -221,6 +221,10 @@
 
 .rowsContainer{
     margin-top: -120px;
+}
+
+.rowContent .movieRowContainer:not(:first-child){
+    margin-top: 20px;
 }
 
 .SideFeatureMovieOverlayContainerContent{
@@ -304,7 +308,7 @@
     }
 
     #sideFeaturedMovies{
-        margin-top: -140px;
+        margin-top: -155px;
         display: flex;
     }
 }
@@ -332,7 +336,7 @@
     }
 
     #sideFeaturedMovies{
-        margin-top: -175px;
+        margin-top: -215px;
     }
 
     #featuredLikeButton{

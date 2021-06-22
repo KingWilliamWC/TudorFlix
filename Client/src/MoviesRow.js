@@ -20,9 +20,9 @@ class MoviesRow extends Component {
         // console.log(sender);
         var f = document.getElementsByClassName('moviesRowSliderContainer')
         if(sender === 'right'){
-            f[0].scrollLeft += 350;
+            f[this.props.index].scrollLeft += 500;
         }else if(sender === 'left'){
-            f[0].scrollLeft -= 350;
+            f[this.props.index].scrollLeft -= 500;
         }
     }
     
@@ -38,11 +38,14 @@ class MoviesRow extends Component {
             <div className='movieRowContainer'>
                 <div className='rowTopContainer'>
                     <div className='movieRowTitleContainer'>
-                        <p className='movieRowTitle'>For You</p>
+                        <p className='movieRowTitle'>{this.props.name}</p>
+                    </div>
+                    <div className='viewAllButtonContainer'>
+                        <p>See More</p>
                     </div>
                     <div className='buttonSlideContainer'>
-                        <div onClick={() => this.HandleSlide('left')} className='ButtonSlide'><img className='flippedArrow ArrowButtonImage' src={ArrowSVG}></img></div>
-                        <div onClick={() => this.HandleSlide('right')} className='ButtonSlide'><img className='ArrowButtonImage' src={ArrowSVG}></img></div>
+                        <div onClick={() => this.HandleSlide('left')} className='ButtonSlide'><img className='flippedArrow ArrowButtonImage' src={ArrowSVG} alt=''></img></div>
+                        <div onClick={() => this.HandleSlide('right')} className='ButtonSlide'><img className='ArrowButtonImage' src={ArrowSVG} alt=''></img></div>
                     </div>
                 </div>
                 
