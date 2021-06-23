@@ -26,7 +26,7 @@ const GetAPI = async (paths, res) => {
   var returnData = {'data': []}
   returnData.order = ['featured', 'trending'];
   for(var x = 0; x < paths.length; x++){
-    await axios.get(`${base_path}${paths[0]}`)
+    await axios.get(`${base_path}${paths[x]}`)
     .then(resp => {
       returnData.data.push(resp.data.results);
       
@@ -44,7 +44,7 @@ router.get('/user/', function(req, res, next) {
 });
 
 router.get('/home/', function(req, res, next){
-  paths = ['/movie/now_playing?api_key=7c564bf98c4e72a69dbe7ed063ae47dc&language=en-US&page=1&region=gb', '/movie/popular?api_key=7c564bf98c4e72a69dbe7ed063ae47dc&language=en-US&page=1']
+  paths = ['/movie/now_playing?api_key=7c564bf98c4e72a69dbe7ed063ae47dc&language=en-US&page=1&region=gb', '/trending/movie/day?api_key=7c564bf98c4e72a69dbe7ed063ae47dc']
   GetAPI(paths, res);
 })
 

@@ -34,7 +34,7 @@ class MoviesHome extends Component {
     }
 
     async requestData(){
-        await axios.get('https://52.151.90.27/api/home/')
+        await axios.get('http://localhost/api/home/')
             .then(res => {
                 const data = res.data;
                 console.log(data);
