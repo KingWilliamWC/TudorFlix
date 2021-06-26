@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.69ce253e.chunk.css",
+    "main.css": "/static/css/main.cc1d967d.chunk.css",
     "main.js": "/static/js/main.4062faa3.chunk.js",
     "main.js.map": "/static/js/main.4062faa3.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.e07f9a2a.js",
@@ -8,7 +8,7 @@
     "static/js/2.d691fd5d.chunk.js": "/static/js/2.d691fd5d.chunk.js",
     "static/js/2.d691fd5d.chunk.js.map": "/static/js/2.d691fd5d.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.69ce253e.chunk.css.map": "/static/css/main.69ce253e.chunk.css.map",
+    "static/css/main.cc1d967d.chunk.css.map": "/static/css/main.cc1d967d.chunk.css.map",
     "static/js/2.d691fd5d.chunk.js.LICENSE.txt": "/static/js/2.d691fd5d.chunk.js.LICENSE.txt",
     "static/media/Arrow-Solid.f304c530.svg": "/static/media/Arrow-Solid.f304c530.svg",
     "static/media/Bell-Solid.3863c032.svg": "/static/media/Bell-Solid.3863c032.svg",
@@ -26,7 +26,7 @@
   "entrypoints": [
     "static/js/runtime-main.e07f9a2a.js",
     "static/js/2.d691fd5d.chunk.js",
-    "static/css/main.69ce253e.chunk.css",
+    "static/css/main.cc1d967d.chunk.css",
     "static/js/main.4062faa3.chunk.js"
   ]
 }
