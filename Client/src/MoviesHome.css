@@ -25,6 +25,18 @@
     object-fit: cover;
     width: 100%;
     border-radius: 10px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+/* #featuredMovieImage:hover{
+    transform: scale(1.01);
+} */
+
+#featuredMovieImageContainer{
+    overflow: hidden;
+    border-radius: 10px;
+    z-index: 20;
 }
 
 #featuredMovieDescriptionContainer{
@@ -146,6 +158,7 @@
     width: fit-content;
     height: fit-content;
     position: relative;
+    border-radius: 10px;
 }
 
 .sideFeaturedMovie{
@@ -154,6 +167,8 @@
     position: relative;
     cursor: pointer;
     margin-bottom: 14px;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
 /* #featuredMovieImage:hover{
@@ -164,6 +179,10 @@
     background-color: #000000ad;
     color: rgb(255, 255, 255);
     opacity: 1;
+}
+
+.sideFeaturedMovie:hover .sideFeaturedMovieImg, .sideFeaturedMovie:hover .SideFeatureMovieOverlayContainer{ 
+    transform: scale(1.03);
 }
 
 .sideFeaturedMovieImg{
@@ -183,12 +202,12 @@
 .SideFeatureMovieOverlayContainer{
     position: absolute;
     background-color: #2e2f3600;
-    height: 99.5%;
-    top: -1px;
+    height: 105%;
+    width: 105%;
+    top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    width: 100.1%;
     border-radius: 10px;
     opacity: 0;
     transition: all 0.1s ease;
@@ -209,6 +228,7 @@
     justify-content: center;
     text-align: center;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 .seperator-side{
@@ -291,6 +311,10 @@
     #sideFeaturedMovies .sideFeaturedMovie .sideFeaturedMovieImg:not(:last-child){
         margin-right: 18px;
     }
+
+    .SideFeaturedMovieTitle{
+        font-size: 150%;
+    }
 }
 
 @media only screen and (max-width: 650px){
@@ -310,6 +334,14 @@
     #sideFeaturedMovies{
         margin-top: -155px;
         display: flex;
+    }
+
+    .sideGenreContainer p {
+        font-size: 80%;
+    }
+
+    .SideFeaturedMovieTitle{
+        font-size: 120%;
     }
 }
 
@@ -336,7 +368,7 @@
     }
 
     #sideFeaturedMovies{
-        margin-top: -215px;
+        margin-top: -205px;
     }
 
     #featuredLikeButton{
@@ -347,5 +379,9 @@
         display: flex;
         margin-left: auto;
         padding-top: 10px;
+    }
+
+    .SideFeaturedMovieTitle{
+        font-size: 80%;
     }
 }

@@ -77,6 +77,33 @@
     }
 }
 
+
+
+@media only screen and (max-width: 1100px) {
+    #sidebarSide{
+        width: 220px;
+    }
+}
+
+@media only screen and (max-width: 1000px){
+    .sideButtonText{
+        display: none;
+    }
+
+    #sidebarSide{
+        width: fit-content;
+    }
+
+    #sidebar{
+        margin-right: 35px;
+    }
+
+    #sidebuttonsContainer{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
 @media only screen and (max-width: 850px) {
     #sidebarSide{
         display: none;
@@ -121,25 +148,5 @@
         display: flex;
         width: 100%;
         justify-content: center;
-    }
-}
-
-@media only screen and (max-width: 1100px) {
-    #sidebarSide{
-        width: 220px;
-    }
-}
-
-@media only screen and (max-width: 1000px){
-    .sideButtonText{
-        display: none;
-    }
-
-    #sidebarSide{
-        width: fit-content;
-    }
-
-    #sidebuttonsContainer{
-        padding-right: 20px;
     }
 }

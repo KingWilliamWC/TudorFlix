@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import './MoviesRow.css';
 
 import ArrowSVG from './SVG/Arrow-Solid.svg';
+import StarSVG from './SVG/Star-Solid.svg';
 
 class MoviesRow extends Component {
     constructor(props){
@@ -31,6 +32,23 @@ class MoviesRow extends Component {
             this.state.MovieItems.push(
                 <div className='sliderItem'>
                         <img className='sliderImg' src={`https://image.tmdb.org/t/p/w1280/${this.props.movies[i].poster_path}`} alt=''></img>
+                        <div className='movieOverlayContainer'>
+                            <div className='movieOverlayContainerContent'>
+                                <p className='movieTitle'>{this.props.movies[i].title}</p>
+                                <p>{this.props.movies[i].release_date.substring(0,4)}</p>
+                            </div>
+                            {/* <div className='movieShortInfoContainer'>
+                                <div className='movieShortInfoContent'>
+                                        <p>Adventure</p>
+                                        <p>2h 21m</p>
+                                        <div className='userRatingsContainer'>
+                                            <img className='movieStarIcon' alt='' src={StarSVG}></img>
+                                            <p>8.3</p>
+                                        </div>
+
+                                </div>
+                            </div> */}
+                        </div>
                 </div>
             )
         }

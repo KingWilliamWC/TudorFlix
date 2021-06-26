@@ -34,7 +34,7 @@ class MoviesHome extends Component {
     }
 
     async requestData(){
-        await axios.get('http://localhost/api/home/')
+        await axios.get('https://52.151.90.27/api/home/')
             .then(res => {
                 const data = res.data;
                 console.log(data);
@@ -53,8 +53,9 @@ class MoviesHome extends Component {
                     <p id='featuredTitle'>Featured</p>
                     <div id='featuredMoviesContainer'>
                         <div id='featuredMovie'>
-                            {/* <img id='featuredMovieImage' alt='' src='https://image.tmdb.org/t/p/original/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg'></img> */}
-                            {this.state.FeaturedMovie ? <img id='featuredMovieImage' alt='' src={`https://image.tmdb.org/t/p/w1280/${this.state.FeaturedMovie.backdrop_path}`}></img> : ''}
+                            <div id='featuredMovieImageContainer'>
+                                {this.state.FeaturedMovie ? <img id='featuredMovieImage' alt='' src={`https://image.tmdb.org/t/p/w1280/${this.state.FeaturedMovie.backdrop_path}`}></img> : ''}
+                            </div>
                             <div id='featuredMovieDescriptionContainer'>
                                 <div id='FeaturedContent'>
                                     {this.state.FeaturedMovie ? <p id='featuredMovieTitle'>{this.state.FeaturedMovie.title}</p> : ''}
@@ -101,6 +102,7 @@ class MoviesHome extends Component {
                                             <img alt='' className='seperator-side' src={CircleSVG}></img>
                                             <p>Crime</p>
                                         </div>
+                                        <p>15</p>
                                     </div>
                                 </div>
                             </div>
@@ -114,6 +116,7 @@ class MoviesHome extends Component {
                                             <img alt='' className='seperator-side' src={CircleSVG}></img>
                                             <p>Crime</p>
                                         </div>
+                                        <p>15</p>
                                     </div>
                                 </div>
                             </div>
