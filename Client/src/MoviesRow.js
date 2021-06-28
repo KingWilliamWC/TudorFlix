@@ -30,7 +30,7 @@ class MoviesRow extends Component {
     render(){
         for(var i = 0; i < this.props.movies.length; i++){
             this.state.MovieItems.push(
-                <div className='sliderItem'>
+                <div onClick={() => this.props.handleMovieClick()} className='sliderItem'>
                         <img className='sliderImg' src={`https://image.tmdb.org/t/p/w1280/${this.props.movies[i].poster_path}`} alt=''></img>
                         <div className='movieOverlayContainer'>
                             <div className='movieOverlayContainerContent'>

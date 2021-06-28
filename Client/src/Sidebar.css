@@ -1,6 +1,6 @@
 #sidebar{
     margin-right: 50px;
-
+    z-index: 1;
 }
 
 #sidebarSide{
@@ -9,7 +9,7 @@
     height: 100vh;
     display: inline-block;
     position: fixed;
-    z-index: 10;
+    z-index: 1;
     top: 0;
     left: 0;
 }

@@ -9,6 +9,7 @@ import PlaySVG from './SVG/Play-Solid.svg';
 import CircleSVG from './SVG/Circle-Solid.svg';
 
 import MoviesRow from './MoviesRow.js';
+import MovieSlideUp from './MovieFullTab';
 
 class MoviesHome extends Component {
     constructor(props){
@@ -18,6 +19,7 @@ class MoviesHome extends Component {
             FeaturedMovie: '',
             SideMovies: ['', ''],
             Trending: null,
+            slideUpClass: ['movieFullTabContainer', 'movieFullTabContainerClosed']
         };
 
         this.functions = {
@@ -27,6 +29,7 @@ class MoviesHome extends Component {
     componentWillMount() {
         this.requestData();
     }
+    
 
     callbackAfterRequest = () => {
         
@@ -45,6 +48,10 @@ class MoviesHome extends Component {
                 })
                 console.log(this.state);
             })
+    }
+
+    handleMovieClick = () => {
+        console.log('SlideUp!');
     }
     render(){
         return(
@@ -125,10 +132,11 @@ class MoviesHome extends Component {
                 </div>
                 <div className='rowsContainer'>
                     <div className='rowContent'>
-                        {this.state.Trending != null ? <MoviesRow name={'For You'} index={0} movies={this.state.Trending}/> : ''}
-                        {this.state.Trending != null ? <MoviesRow name={'Trending'} index={1} movies={this.state.Trending}/> : ''}
+                        {this.state.Trending != null ? <MoviesRow clickHandler={this.handleMovieClick} name={'For You'} index={0} movies={this.state.Trending}/> : ''}
+                        {this.state.Trending != null ? <MoviesRow ckHandler={this.handleMovieClick} name={'Trending'} index={1} movies={this.state.Trending}/> : ''}
                     </div>
                 </div>
+                <MovieSlideUp slideupClass={this.state.slideUpClass[0]}/>
             </div>
         )
     }
