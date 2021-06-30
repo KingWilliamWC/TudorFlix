@@ -10,6 +10,7 @@ import CircleSVG from './SVG/Circle-Solid.svg';
 
 import MoviesRow from './MoviesRow.js';
 import MovieSlideUp from './MovieFullTab';
+import MovieFullTab from './MovieFullTab';
 
 class MoviesHome extends Component {
     constructor(props){
@@ -19,7 +20,10 @@ class MoviesHome extends Component {
             FeaturedMovie: '',
             SideMovies: ['', ''],
             Trending: null,
-            slideUpClass: ['movieFullTabContainer', 'movieFullTabContainerClosed']
+            slideUpClass: ['movieFullTabContainer', 'movieFullTabContainerClosed'],
+            isOpen: 0,
+            allowRender: true,
+            currentMovieData: null,
         };
 
         this.functions = {
@@ -30,6 +34,9 @@ class MoviesHome extends Component {
         this.requestData();
     }
     
+    componentDidMount() {
+        this.setState({allowRender: false});
+    }
 
     callbackAfterRequest = () => {
         
@@ -37,22 +44,47 @@ class MoviesHome extends Component {
     }
 
     async requestData(){
-        await axios.get('https://52.151.90.27/api/home/')
+        await axios.get('http://localhost/api/home/')
             .then(res => {
-                const data = res.data;
+                const data = res.data.data;
                 console.log(data);
                 this.setState({
-                    FeaturedMovie: data.data[0][0],
-                    SideMovies: [data.data[0][1], data.data[0][2]],
-                    Trending: data.data[1]
+                    FeaturedMovie: data[0].results[0],
+                    SideMovies: [data[0].results[1], data[0].results[2]],
+                    Trending: data[1].results
                 })
                 console.log(this.state);
             })
     }
 
-    handleMovieClick = () => {
-        console.log('SlideUp!');
+    async getMovieInfo(movieID){
+        console.log(movieID);
+        await axios.get(`http://localhost/api/movie/?id=${movieID}`)
+            .then(res => {
+                var statetoset = 0;
+                if(this.state.isOpen === 0){
+                    statetoset = 1;
+                }
+                console.log(res.data);
+                this.setState({currentMovieData: res.data, isOpen: statetoset});
+                return res;
+            })
     }
+
+    handleMovieClick = (movieID) => {
+        if(movieID != 'none'){
+            this.getMovieInfo(movieID)
+        }else{
+            if(this.state.isOpen === 0){
+                this.setState({isOpen: 1});
+            }else{
+                this.setState({isOpen: 0});
+            }
+        }
+
+    }
+
+    // shouldComponentUpdate() {if(this.state.allowRender === true){return true;}else{return false;} }
     render(){
         return(
             <div id='moviesContainer'>
@@ -133,10 +165,11 @@ class MoviesHome extends Component {
                 <div className='rowsContainer'>
                     <div className='rowContent'>
                         {this.state.Trending != null ? <MoviesRow clickHandler={this.handleMovieClick} name={'For You'} index={0} movies={this.state.Trending}/> : ''}
-                        {this.state.Trending != null ? <MoviesRow ckHandler={this.handleMovieClick} name={'Trending'} index={1} movies={this.state.Trending}/> : ''}
+                        {/* {this.state.Trending != null ? <MoviesRow clickHandler={this.handleMovieClick} name={'Trending'} index={1} movies={this.state.Trending}/> : ''} */}
                     </div>
                 </div>
-                <MovieSlideUp slideupClass={this.state.slideUpClass[0]}/>
+                {this.state.currentMovieData != null ? <MovieSlideUp data={this.state.currentMovieData.data[0]} clickHandler={this.handleMovieClick} slideupClass={this.state.slideUpClass[this.state.isOpen]}/> : ''}
+                
             </div>
         )
     }

@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1001;
 }
 
 #fullscreenTabContainer{
@@ -21,7 +22,7 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-    z-index: 100000000;
+    z-index: 1000;
 }
 #fullscreenContent{
     width: 80%;
@@ -29,7 +30,7 @@
     overflow: auto;
     background-color: #1C1D23;
     border-radius: 10px;
-    z-index: 100000000;
+    z-index: 1000;
 }
 
 #movieInfoContainer{

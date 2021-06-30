@@ -22,20 +22,26 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-const GetAPI = async (paths, res) => {
+async function get(paths){
   var returnData = {'data': []}
-  returnData.order = ['featured', 'trending'];
   for(var x = 0; x < paths.length; x++){
     await axios.get(`${base_path}${paths[x]}`)
     .then(resp => {
-      returnData.data.push(resp.data.results);
+      returnData.data.push(resp.data);
       
     })
     .catch(err => {
       console.error(err);
     })
   }
-  res.json(returnData);
+
+  return returnData;
+}
+
+const GetAPI = async (paths, res) => {
+
+  var returnAPI = await get(paths);
+  res.json(returnAPI);
   res.end();
 }
 
@@ -45,6 +51,12 @@ router.get('/user/', function(req, res, next) {
 
 router.get('/home/', function(req, res, next){
   paths = ['/movie/now_playing?api_key=7c564bf98c4e72a69dbe7ed063ae47dc&language=en-US&page=1&region=gb', '/trending/movie/day?api_key=7c564bf98c4e72a69dbe7ed063ae47dc']
+  GetAPI(paths, res);
+});
+
+router.get('/movie/', function(req, res, next){
+  console.log(`id: ${req.query.id}`);
+  paths = [`/movie/${req.query.id}?api_key=7c564bf98c4e72a69dbe7ed063ae47dc&language=en-US`]
   GetAPI(paths, res);
 })
 

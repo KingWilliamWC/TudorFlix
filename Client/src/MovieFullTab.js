@@ -11,20 +11,25 @@ class MovieFullTab extends Component {
     openTab = () =>{
         console.log('openTab');
     }
+
+    componentDidMount() {
+        console.log(this.props.data);
+    }
     render(){
         return(
             <div id={this.props.slideupClass}>
-                <div id='fullscreenTabContainer'>
-                    <div id='fullscreenSurroundingContainer'>
+                <div onClick={() => this.props.clickHandler('none')} id='fullscreenTabContainer'>
+                </div>
+                <div id='fullscreenSurroundingContainer'>
                         <div id='fullscreenContent'>
                             <div id='movieInfoContainer'>
                                 <div id='movieImageContainer'>
-                                    <img src='https://image.tmdb.org/t/p/w1280/jTswp6KyDYKtvC52GbHagrZbGvD.jpg'></img>
+                                    <img src={`https://image.tmdb.org/t/p/w1280${this.props.data.poster_path}`}></img>
                                 </div>
                                 <div id='movieFullInfoContainer'>
-                                    <p id='movieFullInfoTitle'>Luca</p>
+                                    <p id='movieFullInfoTitle'>{this.props.data.title}</p>
                                     <p className='movieFullInfoText'>15</p>
-                                    <p className='movieFullInfoText'>2021</p>
+                                    <p className='movieFullInfoText'>{this.props.data.release_date.substring(0,4)}</p>
                                     <div id='fullGenreContainer'>
                                         <p>Adventure</p>
                                         <img alt='' className='seperator-side' src={CircleSVG}></img>
@@ -32,12 +37,10 @@ class MovieFullTab extends Component {
                                     </div>
                                     <div id='movieFullRatingsContainer'>
                                         <img id='featuredStarIcon' alt='' src={StarSVG}></img>
-                                        <p>8.6</p>
+                                        <p>{this.props.data.vote_average}</p>
                                     </div>
                                     <div id='fullMovieInfoOverviewContainer'>
-                                        <p>Luca and his best friend Alberto experience an unforgettable summer on the Italian Riviera.
-                                        But all the fun is threatened by a deeply-held secret: they are sea monsters from another
-                                        world just below the water’s surface</p>
+                                        <p>{this.props.data.overview}</p>
                                     </div>
                                     <div id='movieFullInfoButtonsContainer'>
                                         <div id='movieFullInfoLikeButton'>
@@ -52,7 +55,6 @@ class MovieFullTab extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
         )
     }
