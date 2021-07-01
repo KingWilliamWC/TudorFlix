@@ -15,7 +15,6 @@ class App extends Component {
         return(
             <div id='app'>
                 <Sidebar/>
-                
                 <div id='mainContent'>
                     <Bartop />
                     <MoviesHome />

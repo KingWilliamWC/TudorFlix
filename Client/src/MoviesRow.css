@@ -59,18 +59,10 @@
     scroll-behavior: smooth;
 }
 
-
-
 .sliderItemContent:hover .movieOverlayContainer{
     opacity: 1;
     background-color: rgba(0, 0, 0, 0.61);
 }
-
-
-
-/* .sliderItem:not(:first-child){
-    margin-left: 50px;
-} */
 
 .sliderImg{
     width: 100%;
@@ -165,18 +157,12 @@
 }
 
 @media only screen and (max-width: 1400px) {
-    /* .sliderItem:not(:first-child){
-        margin-left: 35px;
-    } */
     .sliderItem{
         width: 18%;
     }
 }
 
 @media only screen and (max-width: 650px) {
-    /* .sliderItem:not(:first-child){
-        margin-left: 25px;
-    } */
     .sliderItem{
         width: 38%;
     }
@@ -190,6 +176,4 @@
     .movieTitle{
         font-size: 3vw;
     }
-
-
 }

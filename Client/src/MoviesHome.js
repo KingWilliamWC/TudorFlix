@@ -44,19 +44,20 @@ class MoviesHome extends Component {
     }
 
     async requestData(){
-        await axios.get('https://52.151.90.27/api/home/')
+        await axios.get('http://localhost/api/home/')
             .then(res => {
-                const data = res.data.data;
+                const data = res.data;
+                console.log(data);
                 this.setState({
-                    FeaturedMovie: data[0].results[0],
-                    SideMovies: [data[0].results[1], data[0].results[2]],
-                    Trending: data[1].results
+                    FeaturedMovie: data.data[0].results[0],
+                    SideMovies: [data.data[0].results[1], data.data[0].results[2]],
+                    Trending: data.data[1].results
                 })
             })
     }
 
     async getMovieInfo(movieID){
-        await axios.get(`https://52.151.90.27/api/movie/?id=${movieID}`)
+        await axios.get(`http://localhost/api/movie/?id=${movieID}`)
             .then(res => {
                 var statetoset = 0;
                 if(this.state.isOpen === 0){
@@ -68,7 +69,7 @@ class MoviesHome extends Component {
     }
 
     handleMovieClick = (movieID) => {
-        if(movieID != 'none'){
+        if(movieID !== 'none'){
             this.getMovieInfo(movieID)
         }else{
             if(this.state.isOpen === 0){
