@@ -44,7 +44,7 @@ class MoviesHome extends Component {
     }
 
     async requestData(){
-        await axios.get('http://localhost/api/home/')
+        await axios.get('https://52.151.90.27/api/home/')
             .then(res => {
                 const data = res.data;
                 console.log(data);
@@ -57,7 +57,7 @@ class MoviesHome extends Component {
     }
 
     async getMovieInfo(movieID){
-        await axios.get(`http://localhost/api/movie/?id=${movieID}`)
+        await axios.get(`https://52.151.90.27/api/movie/?id=${movieID}`)
             .then(res => {
                 var statetoset = 0;
                 if(this.state.isOpen === 0){
