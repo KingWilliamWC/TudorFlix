@@ -23,11 +23,11 @@ var port = normalizePort(process.env.PORT || '80');
 app.set('port', port);
 
 /**
- * Create HTTP server.
+ * Create HTTP/S server.
  */
 
-var server = http.createServer(app);
-// var server = https.createServer(credentials, app);
+// var server = http.createServer(app);
+var server = https.createServer(credentials, app);
 
 /**
  * Listen on provided port, on all network interfaces.

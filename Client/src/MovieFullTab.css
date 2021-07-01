@@ -10,6 +10,19 @@
     justify-content: center;
     align-items: center;
     z-index: 1001;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.escape_container{
+    color: white;
+    position: fixed;
+    left: 87.5%;
+    top: 8.5%;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 #fullscreenTabContainer{
@@ -144,6 +157,8 @@
     background-color: rgba(255, 255, 255, 0.12);
 }
 
+
+
 @media only screen and (max-width: 1000px) {
     #fullMovieInfoOverviewContainer{
         width: 90%;
@@ -165,6 +180,50 @@
     #fullscreenContent{
         width: 93%;
         height: 80%;
+    }
+
+    #movieInfoContainer{
+        flex-direction: column;
+        padding-left: 0;
+        padding-top: 0;
+        align-items: center;
+        padding-top: 20px;
+    }
+
+    #movieFullInfoContainer{
+        display: contents;
+    }
+
+    .movieFullMetricsContainer{
+        display: flex;
+        align-items: center;
+    }
+
+    .movieFullInfoText{
+        margin-top: 5px;
+    }
+
+    .movieFullInfoRelease{
+        margin-left: 25px;
+    }
+
+    #fullGenreContainer{
+        margin-top: 5px;
+        margin-left: 25px;
+    }
+
+    #movieFullRatingsContainer{
+        margin-top: 5px;
+        margin-left: 25px;
+    }
+
+    #movieFullInfoTitle{
+        margin-top: 10px;
+    }
+
+    .escape_container{
+        left: 91.5%;
+        top: 11%;
     }
 }
 

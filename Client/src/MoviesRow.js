@@ -14,13 +14,8 @@ class MoviesRow extends Component {
             MovieItems: [],
         }
     }
-    componentDidMount() {
-        var f = this.props;
-        console.log(f);
-    }
 
     HandleSlide(sender){
-        // console.log(sender);
         var f = document.getElementsByClassName('moviesRowSliderContainer')
         if(sender === 'right'){
             f[this.props.index].scrollLeft += 500;

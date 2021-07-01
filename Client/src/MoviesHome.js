@@ -44,28 +44,24 @@ class MoviesHome extends Component {
     }
 
     async requestData(){
-        await axios.get('http://localhost/api/home/')
+        await axios.get('https://52.151.90.27/api/home/')
             .then(res => {
                 const data = res.data.data;
-                console.log(data);
                 this.setState({
                     FeaturedMovie: data[0].results[0],
                     SideMovies: [data[0].results[1], data[0].results[2]],
                     Trending: data[1].results
                 })
-                console.log(this.state);
             })
     }
 
     async getMovieInfo(movieID){
-        console.log(movieID);
-        await axios.get(`http://localhost/api/movie/?id=${movieID}`)
+        await axios.get(`https://52.151.90.27/api/movie/?id=${movieID}`)
             .then(res => {
                 var statetoset = 0;
                 if(this.state.isOpen === 0){
                     statetoset = 1;
                 }
-                console.log(res.data);
                 this.setState({currentMovieData: res.data, isOpen: statetoset});
                 return res;
             })
@@ -165,7 +161,7 @@ class MoviesHome extends Component {
                 <div className='rowsContainer'>
                     <div className='rowContent'>
                         {this.state.Trending != null ? <MoviesRow clickHandler={this.handleMovieClick} name={'For You'} index={0} movies={this.state.Trending}/> : ''}
-                        {/* {this.state.Trending != null ? <MoviesRow clickHandler={this.handleMovieClick} name={'Trending'} index={1} movies={this.state.Trending}/> : ''} */}
+                        {this.state.Trending != null ? <MoviesRow clickHandler={this.handleMovieClick} name={'Trending'} index={1} movies={this.state.Trending}/> : ''}
                     </div>
                 </div>
                 {this.state.currentMovieData != null ? <MovieSlideUp data={this.state.currentMovieData.data[0]} clickHandler={this.handleMovieClick} slideupClass={this.state.slideUpClass[this.state.isOpen]}/> : ''}

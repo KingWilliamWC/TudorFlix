@@ -55,7 +55,6 @@ router.get('/home/', function(req, res, next){
 });
 
 router.get('/movie/', function(req, res, next){
-  console.log(`id: ${req.query.id}`);
   paths = [`/movie/${req.query.id}?api_key=7c564bf98c4e72a69dbe7ed063ae47dc&language=en-US`]
   GetAPI(paths, res);
 })
