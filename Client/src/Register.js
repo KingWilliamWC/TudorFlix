@@ -74,7 +74,7 @@ class Register extends Component {
         if(this.state.isSigningUp === false){
             await axios.post('https://52.151.90.27/api/signin/', {'username': username, 'password': password})
             .then(res => {
-                if(res.data.message === 'no_user'){
+                if(res.data.message === 'error'){
                     this.setState({ errorState: 1, errorMessage: 'Username or Password is Incorrect'})
                 }else if(res.data.message === 'user_successful'){
                     localStorage.setItem('username', JSON.stringify(res.data.user));
