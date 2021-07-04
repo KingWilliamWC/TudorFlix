@@ -1,32 +1,38 @@
 {
   "files": {
-    "main.css": "/static/css/main.4f84dbc7.chunk.css",
-    "main.js": "/static/js/main.ef1d8348.chunk.js",
-    "main.js.map": "/static/js/main.ef1d8348.chunk.js.map",
+    "main.css": "/static/css/main.61dc8b0f.chunk.css",
+    "main.js": "/static/js/main.abd0832d.chunk.js",
+    "main.js.map": "/static/js/main.abd0832d.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.e07f9a2a.js",
     "runtime-main.js.map": "/static/js/runtime-main.e07f9a2a.js.map",
-    "static/js/2.c0c4ea24.chunk.js": "/static/js/2.c0c4ea24.chunk.js",
-    "static/js/2.c0c4ea24.chunk.js.map": "/static/js/2.c0c4ea24.chunk.js.map",
+    "static/js/2.f43b0855.chunk.js": "/static/js/2.f43b0855.chunk.js",
+    "static/js/2.f43b0855.chunk.js.map": "/static/js/2.f43b0855.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.4f84dbc7.chunk.css.map": "/static/css/main.4f84dbc7.chunk.css.map",
-    "static/js/2.c0c4ea24.chunk.js.LICENSE.txt": "/static/js/2.c0c4ea24.chunk.js.LICENSE.txt",
+    "static/css/main.61dc8b0f.chunk.css.map": "/static/css/main.61dc8b0f.chunk.css.map",
+    "static/js/2.f43b0855.chunk.js.LICENSE.txt": "/static/js/2.f43b0855.chunk.js.LICENSE.txt",
+    "static/media/Action-Solid.51d1f46c.svg": "/static/media/Action-Solid.51d1f46c.svg",
+    "static/media/Adventure-Solid.82926197.svg": "/static/media/Adventure-Solid.82926197.svg",
     "static/media/Arrow-Solid.f304c530.svg": "/static/media/Arrow-Solid.f304c530.svg",
     "static/media/Bell-Solid.3863c032.svg": "/static/media/Bell-Solid.3863c032.svg",
     "static/media/Circle-Solid.3c0331aa.svg": "/static/media/Circle-Solid.3c0331aa.svg",
+    "static/media/Comedy-Solid.7b49da9b.svg": "/static/media/Comedy-Solid.7b49da9b.svg",
+    "static/media/Drama-Solid.c1191085.svg": "/static/media/Drama-Solid.c1191085.svg",
     "static/media/Grid-Solid.fc1d3e9c.svg": "/static/media/Grid-Solid.fc1d3e9c.svg",
     "static/media/Heart-Solid.94e4a406.svg": "/static/media/Heart-Solid.94e4a406.svg",
+    "static/media/Horror-Solid.d40a176c.svg": "/static/media/Horror-Solid.d40a176c.svg",
     "static/media/House-Solid.3010b4e0.svg": "/static/media/House-Solid.3010b4e0.svg",
     "static/media/App.css": "/static/media/Moderat-Regular.9d34c3c0.ttf",
     "static/media/Option-Solid.9a14e2cd.svg": "/static/media/Option-Solid.9a14e2cd.svg",
     "static/media/Play-Solid.2c4d9a76.svg": "/static/media/Play-Solid.2c4d9a76.svg",
     "static/media/Rewind-Solid.2d3a5f88.svg": "/static/media/Rewind-Solid.2d3a5f88.svg",
+    "static/media/SciFi-Solid.2cdf244d.svg": "/static/media/SciFi-Solid.2cdf244d.svg",
     "static/media/Search-Solid.4d32873b.svg": "/static/media/Search-Solid.4d32873b.svg",
     "static/media/Star-Solid.514f59ab.svg": "/static/media/Star-Solid.514f59ab.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.e07f9a2a.js",
-    "static/js/2.c0c4ea24.chunk.js",
-    "static/css/main.4f84dbc7.chunk.css",
-    "static/js/main.ef1d8348.chunk.js"
+    "static/js/2.f43b0855.chunk.js",
+    "static/css/main.61dc8b0f.chunk.css",
+    "static/js/main.abd0832d.chunk.js"
   ]
 }

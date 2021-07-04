@@ -1,0 +1,300 @@
+#root{
+    height: 100vh;
+}
+
+#registerApp{
+    display: block;
+    height: 92vh;
+    overflow: hidden;
+}
+
+#topContainer{
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#signUpLinkContainer{
+    margin-left: auto;
+}
+
+#logoContainer{
+    font-family: Bold;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+#logoContainer p, #loginContainer {
+    color: white;
+}
+
+#firstPartLogo{
+    color: #6DD890;
+}
+
+#signUpLinkContainer{
+    font-size: 16px;
+}
+
+#signUpLinkContainer {
+    color: white;
+}
+
+#sublogintitle{
+    font-family: Regular;
+    font-weight: lighter;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+#createAccountLink{
+    color: #6DD890;
+    cursor: pointer;
+}
+
+#createAccountLink:hover{
+    text-decoration: underline;
+}
+
+.loginContainer{
+    justify-content: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    transition: all 0.2s;
+    opacity: 1;
+}
+
+.loginContainerHide{
+    user-select: none;
+    opacity: 0;
+    height: 0px;
+}
+
+.surveyContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#loginTitle{
+    font-family: Bold;
+    font-size: 35px;
+}
+
+.errorSubmissionContainer{
+    width: 450px;
+    margin-top: 20px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #F54049;
+    user-select: none;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all 0.01s;
+}
+
+.show{
+    user-select: auto;
+    display: flex;
+}
+
+#errorTitle{
+    font-family: Bold;
+    margin-bottom: 10px;
+}
+
+#formContainer{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.InputTitleText{
+    font-size: 20px;
+}
+
+.userInputBox{
+    height: 30px;
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 0, 255, 0);
+    border-radius: 3px;
+    color: white;
+    font-family: Regular;
+    font-size: 18px;
+    transition: all 0.1s;
+    margin-top: 10px;
+}
+
+.userInputBox:focus{
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#forgotPasswordText{
+    font-size: 12px;
+    margin-left: auto;
+    cursor: pointer;
+    color: #6DD890;
+}
+
+#forgotPasswordText:hover{
+    text-decoration: underline;
+}
+
+#passwordForgotContainer{
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+
+#loginButtonContainer{
+    width: 30px;
+    height: 30px;
+    filter: invert(65%) sepia(5%) saturate(170%) hue-rotate(169deg) brightness(84%) contrast(82%);
+    margin-top: 25px;
+    cursor: pointer;
+    transition: all 0.1s;
+    align-self: center;
+}
+
+#loginButtonContainer:hover{
+    filter: invert(65%) sepia(5%) saturate(170%) hue-rotate(169deg) brightness(90%) contrast(82%);
+}
+
+#allrightsText{
+    position: fixed;
+    bottom: 0;
+    bottom: 30px;
+    color: white;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.surveyFavouritesContainerShow{
+    display: none;
+    transition: all 0.3s;
+    justify-content: center;
+    height: 100%;
+    animation-name: surveySlideIn;
+    animation-delay: 500s;
+    animation-duration: 1s;
+}
+
+
+
+#surveyContainer{
+    display: flex;
+    height: 100%;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#surveyTitle{
+    height: fit-content;
+    width: 800px;
+    text-align: left;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    color: white;
+    font-family: Bold;
+    font-size: 25px;
+}
+
+.surveyFavouritesContainer{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    height: 36%;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.genreContainer{
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    cursor: pointer;
+    transition: all 0.1s;
+    padding-top: 10px;
+    border: 5px solid rgba(255, 255, 255, 0);
+    border-radius: 2px;
+}
+
+.genreSelected{
+    border: 5px solid #6DD890;
+}
+
+.genreContainer:hover{
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.genreImage{
+    width: 30%;
+    height: 60%;
+    filter: invert(97%) sepia(44%) saturate(1276%) hue-rotate(62deg) brightness(90%) contrast(85%);
+}
+
+.genreName{
+    color: white;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+#surveyButtonContainer{
+    width: 30px;
+    height: 30px;
+    filter: invert(65%) sepia(5%) saturate(170%) hue-rotate(
+169deg
+) brightness(84%) contrast(82%);
+    margin-top: 60px;
+    cursor: pointer;
+    transition: all 0.1s;
+    align-self: center;
+}
+
+@media only screen and (max-width: 900px) {
+    #surveyTitle{
+        width: 550px;
+        font-size: 23px;
+    }
+    
+    .surveyFavouritesContainer{
+        width: 550px;
+
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    #surveyTitle{
+        width: 400px;
+        font-size: 25px;
+    }
+    .surveyFavouritesContainer{
+        width: 400px;
+
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    #surveyTitle{
+        width: 350px;
+        font-size: 22px;
+    }
+    .surveyFavouritesContainer{
+        width: 350px;
+        height: 30%;
+    }
+}

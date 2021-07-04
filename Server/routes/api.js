@@ -18,6 +18,7 @@ var base_path = 'https://api.themoviedb.org/3';
 const userSchema = new mongoose.Schema({
   username: String,
   password: String,
+  genres: Array,
 });
 
 const User = mongoose.model('User', userSchema);
@@ -60,18 +61,18 @@ router.get('/movie/', function(req, res, next){
 })
 
 router.post('/signin/', function(req, res, next){
-  const currentUsers = User.find({username: req.body.username}, function (err, foundUsernames){
+  User.find({username: req.body.username}, function (err, foundUsernames){
     if(!err){
       if(foundUsernames.length === 1){
         if(foundUsernames[0].password === req.body.password){
-          res.json({'message': 'success'});
+          res.json({'status': 'success','message': 'user_successful', 'user': foundUsernames[0]});
           res.end();
         }else{
-          res.json({'message': 'error'});
+          res.json({'status': 'failure', 'message': 'error'});
           res.end();
         }
       }else{
-        res.json({'message': 'error'});
+        res.json({'status': 'failure','message': 'no_user'});
         res.end();
       }
     }else{
@@ -81,20 +82,35 @@ router.post('/signin/', function(req, res, next){
   });
 })
 
+router.post('/isUser', function(req, res, next){
+  User.find({username: req.body.username.toString()}, function (err, foundUsernames){
+    if(!err){
+      if(foundUsernames.length !== 0){
+        res.json({'message': 'user_already_exists'});
+      }else{
+        res.json({'message': 'user_new'})
+      }
+    }else{
+      res.json({'err': err});
+    }
+
+  })
+})
+
 router.post('/signup/', function(req, res, next){
   const currentUsers = User.find({username: req.body.username}, function (err, foundUsernames){
     if(!err){
      if(foundUsernames.length === 0){
-        const NewUser = new User({username: req.body.username, password: req.body.password}).save(function (err, user){
+        const NewUser = new User({username: req.body.username, password: req.body.password, genres: req.body.genres}).save(function (err, user){
           if(err){res.json({err: 'err'});res.end();}
           else{
-            res.json(user);
+            res.json({status: 'success', 'user': user});
             res.end();
           }
         });
      }
      else{
-       res.json({'err': 'hmmm... it seems as though the username already exists, forgot your password?'});
+       
        res.end();
      }
     }

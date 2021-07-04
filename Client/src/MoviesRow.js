@@ -5,7 +5,6 @@ import './MoviesRow.css';
 import SliderItem from './SliderItem.js';
 
 import ArrowSVG from './SVG/Arrow-Solid.svg';
-import StarSVG from './SVG/Star-Solid.svg';
 
 class MoviesRow extends Component {
     constructor(props){

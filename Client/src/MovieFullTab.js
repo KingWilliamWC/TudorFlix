@@ -21,7 +21,7 @@ class MovieFullTab extends Component {
                             <div id='movieInfoContainer'>
 
                                 <div id='movieImageContainer'>
-                                    <img src={`https://image.tmdb.org/t/p/w1280${this.props.data.poster_path}`}></img>
+                                    <img alt='' src={`https://image.tmdb.org/t/p/w1280${this.props.data.poster_path}`}></img>
                                 </div>
                                 <div id='movieFullInfoContainer'>
                                     <p id='movieFullInfoTitle'>{this.props.data.title}</p>

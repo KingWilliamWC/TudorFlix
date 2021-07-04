@@ -10,7 +10,6 @@ import CircleSVG from './SVG/Circle-Solid.svg';
 
 import MoviesRow from './MoviesRow.js';
 import MovieSlideUp from './MovieFullTab';
-import MovieFullTab from './MovieFullTab';
 
 class MoviesHome extends Component {
     constructor(props){
