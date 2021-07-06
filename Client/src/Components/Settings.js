@@ -128,10 +128,11 @@ class Settings extends Component{
 
     async sendUserSavedata(saveData){
         await axios.post(this.props.routes.update, {saveData})
-        .then(res => {
-            console.log(res.data);
-            localStorage.setItem('username', JSON.stringify(res.data));
-        })
+            .then(res => {
+                console.log(res.data);
+                localStorage.removeItem('username');
+                localStorage.setItem('username', JSON.stringify(res.data));
+            })
     }
 
     userSave = () =>{
