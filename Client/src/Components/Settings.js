@@ -130,6 +130,7 @@ class Settings extends Component{
         await axios.post(this.props.routes.update, {saveData})
         .then(res => {
             console.log(res.data);
+            localStorage.setItem('username', JSON.stringify(res.data));
         })
     }
 
