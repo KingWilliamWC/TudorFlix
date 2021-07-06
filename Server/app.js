@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var cors = require('cors');
+var compression = require('compression');
 // var logger = require('morgan');
 
 var frontRouter = require('./routes/index');
@@ -13,6 +14,7 @@ var app = express();
 app.set('view engine', 'html');
 
 // app.use(logger('tiny'));
+app.use(compression());
 app.use(express.json());
 app.use(cors());
 app.options('*', cors())

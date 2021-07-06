@@ -20,7 +20,7 @@ class Sidebar extends Component {
 
     componentDidMount(){
         var buttonsStatesToAdd = []
-        for(var i = 0; i < 5; i++){
+        for(var i = 0; i < 6; i++){
             buttonsStatesToAdd.push('sideButton');
         }
         buttonsStatesToAdd[0] = 'sideButton sideButtonActive';
@@ -36,12 +36,17 @@ class Sidebar extends Component {
             tempButtonState[this.state.currentButtonIndex] = 'sideButton';
             this.setState({buttonStates: tempButtonState, currentButtonIndex: senderIndex});
         }
+        this.props.HandleTabClick(senderIndex);
     }
 
     render(){
         return(
             <div id='sidebar'>
                 <div id='sidebarSide'>
+                        <div id='logoContainerApp'>
+                            <p id='desktopLogo'><span id='firstPartLogo'>Tudor</span><span>Flix</span></p>
+                            <p id='mobileLogo'><span id='firstPartLogo'>T</span><span>F</span></p>
+                        </div>
                     <div id='sidebuttonsContainer'>
                         <div className='sideButtonsSection'>
                             <div onClick={() => this.HandleButtonClick(0)} className={this.state.buttonStates[0]}>
@@ -68,7 +73,7 @@ class Sidebar extends Component {
                             </div>
                         </div>
                         <div id='optionButtonContainer'>
-                            <div className='sideButton'>
+                            <div onClick={() => this.HandleButtonClick(5)} className={this.state.buttonStates[5]}>
                                     <img className='sideButtonIcon' alt='' src={OptionSVG}></img>
                                     <p className='sideButtonText'>Settings</p>
                             </div>
@@ -77,22 +82,22 @@ class Sidebar extends Component {
                 </div>
                 <div id='sidebarBottom'>
                     <div id='sidebuttonsContainer'>
-                            <div className='sideButton sideButtonActive'>
+                            <div onClick={() => this.HandleButtonClick(0)} className='sideButton sideButtonActive'>
                                 <img className='sideButtonIcon' alt='' src={HouseSVG}></img>
                             </div>
-                            <div className='sideButton'>
+                            <div onClick={() => this.HandleButtonClick(1)} className='sideButton'>
                                 <img className='sideButtonIcon' alt='' src={StarSVG}></img>
                             </div>
-                            <div className='sideButton'>
+                            <div onClick={() => this.HandleButtonClick(2)} className='sideButton'>
                                 <img className='sideButtonIcon' alt='' src={GridSVG}></img>
                             </div>
-                            <div className='sideButton'>
+                            <div onClick={() => this.HandleButtonClick(3)} className='sideButton'>
                                 <img className='sideButtonIcon' alt='' src={HeartSVG}></img>
                             </div>
-                            <div className='sideButton'>
+                            <div onClick={() => this.HandleButtonClick(4)} className='sideButton'>
                                 <img className='sideButtonIcon' alt='' src={RewindSVG}></img>
                             </div>
-                            <div className='sideButton'>
+                            <div onClick={() => this.HandleButtonClick(5)} className='sideButton'>
                                 <img className='sideButtonIcon' alt='' src={OptionSVG}></img>
                             </div>
                     </div>

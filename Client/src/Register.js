@@ -68,22 +68,22 @@ class Register extends Component {
         this.setState({genreClasses: genreStyleClassesToAdd});
     }
 
-    userSubmitInfo = async () =>{
+    userSubmitInfo = async () =>{ //LOG IN
         var username = document.getElementsByClassName('userInputBox')[0].value;
         var password = document.getElementsByClassName('userInputBox')[1].value;
         if(this.state.isSigningUp === false){
-            await axios.post('https://52.151.90.27/api/signin/', {'username': username, 'password': password})
+            await axios.post(this.props.routes.signin, {'username': username, 'password': password})
             .then(res => {
-                if(res.data.message === 'error'){
+                if(res.data.status === 'failure'){
                     this.setState({ errorState: 1, errorMessage: 'Username or Password is Incorrect'})
                 }else if(res.data.message === 'user_successful'){
                     localStorage.setItem('username', JSON.stringify(res.data.user));
                     // console.log(JSON.parse((localStorage.getItem('username'))).genres);
-                    window.location.replace('https://52.151.90.27/app')
+                    window.location.replace(this.props.routes.home)
                 }
             })
-        }else{
-            await axios.post('https://52.151.90.27/api/isUser/', {'username': username, 'password': password})
+        }else{ //SIGN UP
+            await axios.post(this.props.routes.isUser, {'username': username, 'password': password})
             .then(res => {
                 if(res.data.message === 'user_already_exists'){
                     this.setState({ errorState: 1, errorMessage: 'Username already exists'});
@@ -95,27 +95,28 @@ class Register extends Component {
         }
     }
 
-    userSubmitSurvey = async () =>{
-        await axios.post('https://52.151.90.27/api/signup/', {'username': this.state.username, 'password': this.state.password, 'genres': this.state.currentSelectedGenres})
+    userSubmitSurvey = async () =>{// SUBMIT USER INFORMATION FOR SIGNINGUP
+        await axios.post(this.props.routes.signup, {'username': this.state.username, 'password': this.state.password, 'genres': this.state.currentSelectedGenres})
         .then(res =>{
             if(res.data.status === 'success'){
-                window.location.replace('https://52.151.90.27/app')
+                localStorage.setItem('username', JSON.stringify(res.data.user));
+                window.location.replace(this.props.routes.home)
             }
         })
     }
 
-    handleGenreClick(index, genrename){
-        if(this.state.currentSelectedGenres.length < 3 && !this.state.currentSelectedGenres.includes(genrename)){
+    handleGenreClick(index, genreNum){
+        if(this.state.currentSelectedGenres.length < 3 && !this.state.currentSelectedGenres.includes(genreNum)){
             var currentStyleArray = this.state.genreClasses;
             var currentGenreArray = this.state.currentSelectedGenres;
-            currentGenreArray.push(genrename);
+            currentGenreArray.push(genreNum);
             currentStyleArray[index] = 'genreContainer genreSelected';
             this.setState({genreClasses: currentStyleArray, currentSelectedGenres: currentGenreArray});
-        }else if(this.state.currentSelectedGenres.includes(genrename)){ //user selected the genre already
+        }else if(this.state.currentSelectedGenres.includes(genreNum)){ //user selected the genre already
             currentStyleArray = this.state.genreClasses;
             currentStyleArray[index] = 'genreContainer';
             currentGenreArray = this.state.currentSelectedGenres;
-            currentGenreArray = currentGenreArray.filter(item => item !== genrename);
+            currentGenreArray = currentGenreArray.filter(item => item !== genreNum);
             this.setState({genreClasses: currentStyleArray, currentSelectedGenres: currentGenreArray});
         }
     }
@@ -156,27 +157,27 @@ class Register extends Component {
                 <div id='surveyContainer'>
                     <p id='surveyTitle'>What Are Your Favourite Genres? (Select Up To 3)</p>
                     <div className={this.state.favouritesClass[this.state.favouritesClassState]}>
-                        <div onClick={() => this.handleGenreClick(0, 'drama')} className={this.state.genreClasses[0]}>
+                        <div onClick={() => this.handleGenreClick(0, 18)} className={this.state.genreClasses[0]}>
                             <img className='genreImage' src={DramaSVG} alt=''></img>
                             <p className='genreName'>Drama</p>
                         </div>
-                        <div onClick={() => this.handleGenreClick(1, 'action')} className={this.state.genreClasses[1]}>
+                        <div onClick={() => this.handleGenreClick(1, 28)} className={this.state.genreClasses[1]}>
                             <img className='genreImage' src={ActionSVG} alt=''></img>
                             <p className='genreName'>Action</p>
                         </div>
-                        <div onClick={() => this.handleGenreClick(2, 'adventure')} className={this.state.genreClasses[2]}>
+                        <div onClick={() => this.handleGenreClick(2, 12)} className={this.state.genreClasses[2]}>
                             <img className='genreImage' src={AdventureSVG} alt=''></img>
                             <p className='genreName'>Adventure</p>
                         </div>
-                        <div onClick={() => this.handleGenreClick(3, 'comedy')} className={this.state.genreClasses[3]}>
+                        <div onClick={() => this.handleGenreClick(3, 35)} className={this.state.genreClasses[3]}>
                             <img className='genreImage' src={ComedySVG} alt=''></img>
                             <p className='genreName'>Comedy</p>
                         </div>
-                        <div onClick={() => this.handleGenreClick(4, 'horror')} className={this.state.genreClasses[4]}>
+                        <div onClick={() => this.handleGenreClick(4, 27)} className={this.state.genreClasses[4]}>
                             <img className='genreImage' src={HorrorSVG} alt=''></img>
                             <p className='genreName'>Horror</p>
                         </div>
-                        <div onClick={() => this.handleGenreClick(5, 'science-fiction')} className={this.state.genreClasses[5]}>
+                        <div onClick={() => this.handleGenreClick(5, 878)} className={this.state.genreClasses[5]}>
                             <img className='genreImage' src={SciFiSVG} alt=''></img>
                             <p className='genreName'>Science Fiction</p>
                         </div>

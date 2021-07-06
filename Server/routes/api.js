@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 var router = express.Router();
 
-mongoose.connect('mongodb://localhost:27017/tudorflix', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost:27017/tudorflix', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 db.once('open', function(){
@@ -19,6 +19,7 @@ const userSchema = new mongoose.Schema({
   username: String,
   password: String,
   genres: Array,
+  includeadult: Boolean,
 });
 
 const User = mongoose.model('User', userSchema);
@@ -46,12 +47,23 @@ const GetAPI = async (paths, res) => {
   res.end();
 }
 
-/* GET users listing. */
-router.get('/user/', function(req, res, next) {
-});
+router.post('/updateaccount', function(req, res, next){
+  console.log(req.body.saveData);
+  User.findByIdAndUpdate({_id: req.body.saveData._id}, {username: req.body.saveData.username, password: req.body.saveData.password, genres: req.body.saveData.genres, includeadult: req.body.saveData.includeadult}, {upsert: true}, function (err, newUser){
+    if(!err){
+      res.json(newUser);
+    }else{
+      console.log(err);
+      res.json({'status': 'failure','message': err});
+    }
+  })
+  // res.json({'status': 'success'});
+  // res.end();
+})
 
-router.get('/home/', function(req, res, next){
-  paths = ['/movie/now_playing?api_key=7c564bf98c4e72a69dbe7ed063ae47dc&language=en-US&page=1&region=gb', '/trending/movie/day?api_key=7c564bf98c4e72a69dbe7ed063ae47dc']
+router.post('/home/', function(req, res, next){
+  var genres = req.body.genres.join()
+  paths = ['/movie/now_playing?api_key=7c564bf98c4e72a69dbe7ed063ae47dc&language=en-US&page=1&region=gb', '/trending/movie/day?api_key=7c564bf98c4e72a69dbe7ed063ae47dc', `/discover/movie?api_key=7c564bf98c4e72a69dbe7ed063ae47dc&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genres}&with_watch_monetization_types=flatrate`]
   GetAPI(paths, res);
 });
 
@@ -101,7 +113,7 @@ router.post('/signup/', function(req, res, next){
   const currentUsers = User.find({username: req.body.username}, function (err, foundUsernames){
     if(!err){
      if(foundUsernames.length === 0){
-        const NewUser = new User({username: req.body.username, password: req.body.password, genres: req.body.genres}).save(function (err, user){
+        const NewUser = new User({username: req.body.username, password: req.body.password, genres: req.body.genres, includeadult: true}).save(function (err, user){
           if(err){res.json({err: 'err'});res.end();}
           else{
             res.json({status: 'success', 'user': user});
@@ -110,7 +122,6 @@ router.post('/signup/', function(req, res, next){
         });
      }
      else{
-       
        res.end();
      }
     }

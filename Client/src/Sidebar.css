@@ -14,9 +14,26 @@
     left: 0;
 }
 
+#logoContainerApp{
+    font-family: Bold;
+    font-weight: bold;
+    font-size: 40px;
+    padding-left: 30px;
+    padding-top: 20px;
+    color: white;
+}
+
+#mobileLogo{
+    display: none;
+}
+
+#desktopLogo{
+    display: block;
+}
+
 #sidebuttonsContainer{
     padding-left: 35px;
-    padding-top: 100px;
+    padding-top: 70px;
     transition: all 0.03s;
 }
 
@@ -88,6 +105,19 @@
 @media only screen and (max-width: 1000px){
     .sideButtonText{
         display: none;
+    }
+
+    #mobileLogo{
+        display: block;
+    }
+    
+    #desktopLogo{
+        display: none;
+    }
+
+    #logoContainerApp{
+        padding-left: 0;
+        text-align: center;
     }
 
     #sidebarSide{
