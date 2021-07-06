@@ -49,8 +49,9 @@ const GetAPI = async (paths, res) => {
 
 router.post('/updateaccount', function(req, res, next){
   console.log(req.body.saveData);
-  User.findByIdAndUpdate({_id: req.body.saveData._id}, {username: req.body.saveData.username, password: req.body.saveData.password, genres: req.body.saveData.genres, includeadult: req.body.saveData.includeadult}, {upsert: true}, function (err, newUser){
+  User.findByIdAndUpdate(mongoose.Types.ObjectId(req.body.saveData._id), {username: req.body.saveData.username, password: req.body.saveData.password, genres: req.body.saveData.genres, includeadult: req.body.saveData.includeadult}, {new: true}, function (err, newUser){
     if(!err){
+      console.log(newUser);
       res.json(newUser);
     }else{
       console.log(err);
