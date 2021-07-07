@@ -7,14 +7,15 @@ import Register from './Register';
 class AppRouter extends Component {
     
     render(){
+        var urlBase = 'https://52.151.90.27';
         var routes = {
-            'signin': 'https://52.151.90.27/api/signin',
-            'signup': 'https://52.151.90.27/api/signup',
-            'isUser': 'https://52.151.90.27/api/isUser',
-            'update': 'https://52.151.90.27/api/updateaccount',
-            'home': 'https://52.151.90.27/app',
-            'moviehome': 'https://52.151.90.27/api/home',
-            'movie': 'https://52.151.90.27/api/movie/?',
+            'signin': `${urlBase}/api/signin`,
+            'signup': `${urlBase}/api/signup`,
+            'isUser': `${urlBase}/api/isUser`,
+            'update': `${urlBase}/api/updateaccount`,
+            'home': `${urlBase}/app`,
+            'moviehome': `${urlBase}/api/home`,
+            'movie': `${urlBase}/api/movie/?`,
         }
         return(
             <Router>

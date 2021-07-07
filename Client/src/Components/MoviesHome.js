@@ -165,7 +165,7 @@ class MoviesHome extends Component {
                         {this.state.Trending != null ? <MoviesRow clickHandler={this.handleMovieClick} name={'Trending'} index={1} movies={this.state.Trending}/> : ''}
                     </div>
                 </div>
-                {this.state.currentMovieData != null ? <MovieSlideUp data={this.state.currentMovieData.data[0]} clickHandler={this.handleMovieClick} slideupClass={this.state.slideUpClass[this.state.isOpen]}/> : ''}
+                {this.state.isOpen ? <MovieSlideUp data={this.state.currentMovieData.data[0]} clickHandler={this.handleMovieClick} slideupClass={this.state.slideUpClass[this.state.isOpen]}/> : ''}
                 
             </div>
         )

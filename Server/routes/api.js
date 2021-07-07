@@ -20,6 +20,7 @@ const userSchema = new mongoose.Schema({
   password: String,
   genres: Array,
   includeadult: Boolean,
+  favourites: Array,
 });
 
 const User = mongoose.model('User', userSchema);
@@ -69,7 +70,7 @@ router.post('/home/', function(req, res, next){
 });
 
 router.get('/movie/', function(req, res, next){
-  paths = [`/movie/${req.query.id}?api_key=7c564bf98c4e72a69dbe7ed063ae47dc&language=en-US`]
+  paths = [`/movie/${req.query.id}?api_key=7c564bf98c4e72a69dbe7ed063ae47dc&language=en-US&&append_to_response=videos`]
   GetAPI(paths, res);
 })
 
@@ -114,7 +115,7 @@ router.post('/signup/', function(req, res, next){
   const currentUsers = User.find({username: req.body.username}, function (err, foundUsernames){
     if(!err){
      if(foundUsernames.length === 0){
-        const NewUser = new User({username: req.body.username, password: req.body.password, genres: req.body.genres, includeadult: true}).save(function (err, user){
+        const NewUser = new User({username: req.body.username, password: req.body.password, genres: req.body.genres, includeadult: true, favourites: []}).save(function (err, user){
           if(err){res.json({err: 'err'});res.end();}
           else{
             res.json({status: 'success', 'user': user});
