@@ -3,8 +3,10 @@ import axios from 'axios';
 
 //body structure css
 import './App.css';
-
 import './Register.css';
+
+import Login from './Login';
+import SignUp from './SignUp';
 
 import ArrowSVG from './SVG/Arrow-Solid.svg';
 import DramaSVG from './SVG/Drama-Solid.svg';
@@ -20,12 +22,13 @@ class Register extends Component {
         this.state = {
             username: '',
             password: '',
+            email: '',
             errorID: ['errorSubmissionContainer', 'errorSubmissionContainer show'],
             errorState: 0,
             errorMessage: '',
             isSigningUp: false,
             pageContent: [
-                        {'title': 'Log In', 'subtitle': 'Login To Your TudorFlix Account', 'topright': <p>Don't have an account? <span onClick={() => (this.UserChangeSignType('signup'))} id='createAccountLink'>Create Account</span></p>},
+                        {'title': 'Log In', 'subtitle': 'Login To Your TudorFlix Account', 'topright': <p>Don't Have An Account? <span onClick={() => (this.UserChangeSignType('signup'))} id='createAccountLink'>Sign Up</span></p>},
                 {'title': 'Sign Up', 'subtitle': 'Create a TudorFlix Account', 'topright': <p>Already Have An Account? <span onClick={() => (this.UserChangeSignType('login'))} id='createAccountLink'>Log In</span></p>}
             ],
             pageContentState: 0,
@@ -68,9 +71,22 @@ class Register extends Component {
         this.setState({genreClasses: genreStyleClassesToAdd});
     }
 
+    validateEmail = (email) => {
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
     userSubmitInfo = async () =>{ //LOG IN
         var username = document.getElementsByClassName('userInputBox')[0].value;
-        var password = document.getElementsByClassName('userInputBox')[1].value;
+        if(this.state.isSigningUp){
+            var email = document.getElementsByClassName('userInputBox')[1].value;
+            var password = document.getElementsByClassName('userInputBox')[2].value;
+        }else{
+            password = document.getElementsByClassName('userInputBox')[1].value;
+        }
+
+
+        console.log(username, email, password);
         if(this.state.isSigningUp === false){
             await axios.post(this.props.routes.signin, {'username': username, 'password': password})
             .then(res => {
@@ -83,20 +99,25 @@ class Register extends Component {
                 }
             })
         }else{ //SIGN UP
-            await axios.post(this.props.routes.isUser, {'username': username, 'password': password})
-            .then(res => {
-                if(res.data.message === 'user_already_exists'){
-                    this.setState({ errorState: 1, errorMessage: 'Username already exists'});
-                }else if(res.data.message === 'user_new'){
-                    this.setState({username: username, password: password});
-                    this.initializeSignUpSurvey();
-                }
-            })
+            if(username.length > 4 && this.validateEmail(email) && password.length > 4){
+                await axios.post(this.props.routes.isUser, {'username': username})
+                    .then(res => {
+                        if(res.data.message === 'user_already_exists'){
+                            this.setState({ errorState: 1, errorMessage: 'Username already exists'});
+                        }else if(res.data.message === 'user_new'){
+                            this.setState({username: username, password: password, email: email});
+                            this.initializeSignUpSurvey();
+                        }
+                    })
+            }else{
+                this.setState({ errorState: 1, errorMessage: 'Username, Email or Password incorrect'});
+            }
+            
         }
     }
 
     userSubmitSurvey = async () =>{// SUBMIT USER INFORMATION FOR SIGNINGUP
-        await axios.post(this.props.routes.signup, {'username': this.state.username, 'password': this.state.password, 'genres': this.state.currentSelectedGenres})
+        await axios.post(this.props.routes.signup, {'username': this.state.username, 'password': this.state.password, 'email': this.state.email, 'genres': this.state.currentSelectedGenres})
         .then(res =>{
             if(res.data.status === 'success'){
                 localStorage.setItem('username', JSON.stringify(res.data.user));
@@ -140,19 +161,10 @@ class Register extends Component {
                         <p id='errorTitle'>Error</p>
                         <p>{this.state.errorMessage}</p>
                     </div>
-                    <div id='formContainer'>
-                        <p className='InputTitleText'>Username:</p>
-                        <input onKeyPress={this.handleFormInput} type='username' className='userInputBox'></input>
-                        <div id='passwordForgotContainer'>
-                            <p className='InputTitleText'>Password:</p>
-                            <p id='forgotPasswordText'>Forgot Your Password?</p>
-                        </div>
-                        <input onKeyPress={this.handleFormInput} type='password' className='userInputBox'></input>
-                    </div>
+                    {this.state.isSigningUp ? <SignUp handleInput={this.handleFormInput}/> : <Login handleInput={this.handleFormInput}/>}
                     <div onClick={this.userSubmitInfo} id='loginButtonContainer'>
                         <img className='loginButton' src={ArrowSVG} alt=''></img>
                     </div>
-                    
                 </div>
                 <div id='surveyContainer'>
                     <p id='surveyTitle'>What Are Your Favourite Genres? (Select Up To 3)</p>

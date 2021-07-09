@@ -7,13 +7,13 @@ import Register from './Register';
 class AppRouter extends Component {
     
     render(){
-        var urlBase = 'https://52.151.90.27';
+        var urlBase = 'https://tudorflix.wolseley-charles.co.uk';
         var routes = {
             'signin': `${urlBase}/api/signin`,
             'signup': `${urlBase}/api/signup`,
             'isUser': `${urlBase}/api/isUser`,
             'update': `${urlBase}/api/updateaccount`,
-            'home': `${urlBase}/app`,
+            'home': `https://tudorflix.wolseley-charles.co.uk/app`,
             'moviehome': `${urlBase}/api/home`,
             'movie': `${urlBase}/api/movie/?`,
         }

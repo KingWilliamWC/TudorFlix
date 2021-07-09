@@ -22,9 +22,14 @@
     margin-right: 15px;
 }
 
-#mainSettingsContainer{
+.mainSettingsContainer{
     width: 550px;
     margin-bottom: 40px;
+    display: block;
+}
+
+.mainSettingsContainerHide{
+    display: none;
 }
 
 #userSettingsProfileName{
@@ -96,7 +101,9 @@ input[type=checkbox]:checked::before{
     color:orange;
 }
 
-#saveBtn{
+
+
+.saveBtn{
     width: fit-content;
     height: 20px;
     background-color: rgba(255, 255, 255, 0.1);
@@ -107,13 +114,31 @@ input[type=checkbox]:checked::before{
     transition: all 0.1s;
 }
 
-#saveBtn:hover{
+.saveBtn:hover{
     background-color: rgba(255, 255, 255, 0.13);
 }
 
-#saveBtn p {
+.saveBtn p {
     color: white;
 }
+
+.saveBtnHide{
+    display: none;
+}
+
+.surveyContainerSettingsHide{
+    height: 100%;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    display: none;
+}
+
+.surveyContainerSettingsShow{
+    display: flex;
+}
+
+
 
 @media only screen and (max-width: 1000px) {
     #mainSettingsContainer{

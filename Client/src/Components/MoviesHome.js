@@ -43,6 +43,7 @@ class MoviesHome extends Component {
     }
 
     async requestData(){
+        console.log(JSON.parse((localStorage.getItem('username'))).genres);
         await axios.post(this.props.routes.moviehome, {genres: JSON.parse((localStorage.getItem('username'))).genres})
             .then(res => {
                 const data = res.data;

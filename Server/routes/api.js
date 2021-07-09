@@ -18,6 +18,7 @@ var base_path = 'https://api.themoviedb.org/3';
 const userSchema = new mongoose.Schema({
   username: String,
   password: String,
+  email: String,
   genres: Array,
   includeadult: Boolean,
   favourites: Array,
@@ -50,7 +51,7 @@ const GetAPI = async (paths, res) => {
 
 router.post('/updateaccount', function(req, res, next){
   console.log(req.body.saveData);
-  User.findByIdAndUpdate(mongoose.Types.ObjectId(req.body.saveData._id), {username: req.body.saveData.username, password: req.body.saveData.password, genres: req.body.saveData.genres, includeadult: req.body.saveData.includeadult}, {new: true}, function (err, newUser){
+  User.findByIdAndUpdate(mongoose.Types.ObjectId(req.body.saveData._id), {username: req.body.saveData.username, password: req.body.saveData.password, email: req.body.saveData.email, genres: req.body.saveData.genres, includeadult: req.body.saveData.includeadult}, {new: true}, function (err, newUser){
     if(!err){
       console.log(newUser);
       res.json(newUser);
@@ -115,7 +116,7 @@ router.post('/signup/', function(req, res, next){
   const currentUsers = User.find({username: req.body.username}, function (err, foundUsernames){
     if(!err){
      if(foundUsernames.length === 0){
-        const NewUser = new User({username: req.body.username, password: req.body.password, genres: req.body.genres, includeadult: true, favourites: []}).save(function (err, user){
+        const NewUser = new User({username: req.body.username, password: req.body.password, email: req.body.email, genres: req.body.genres, includeadult: true, favourites: []}).save(function (err, user){
           if(err){res.json({err: 'err'});res.end();}
           else{
             res.json({status: 'success', 'user': user});

@@ -155,7 +155,7 @@
 #passwordForgotContainer{
     display: flex;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 #loginButtonContainer{
@@ -265,6 +265,10 @@
     align-self: center;
 }
 
+.email{
+    margin-top: 20px;
+}
+
 @media only screen and (max-width: 900px) {
     #surveyTitle{
         width: 550px;
@@ -284,17 +288,25 @@
     }
     .surveyFavouritesContainer{
         width: 400px;
+    }
 
+    .genreContainer{
+        padding-top: 0;
+    }
+
+    .genreName{
+        font-size: 16px;
+        margin-top: 0;
     }
 }
 
 @media only screen and (max-width: 450px) {
     #surveyTitle{
-        width: 350px;
+        width: 390px;
         font-size: 22px;
     }
     .surveyFavouritesContainer{
-        width: 350px;
+        width: 390px;
         height: 30%;
     }
 }

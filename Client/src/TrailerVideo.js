@@ -13,7 +13,7 @@ class TrailerVideo extends Component {
                     <p>X</p>
                 </div>
                 <div id='videoContentContainer'>
-                    <iframe width='100%' height='100%' title='trailer' allowFullScreen="allowfullscreen" frameBorder="0" src={`https://www.youtube.com/embed/${this.props.data}`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe width='100%' height='100%' title='trailer' allowFullScreen="allowfullscreen" frameBorder="0" src={`https://www.youtube.com/embed/${this.props.data}?autoplay=1`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </div>
         )
