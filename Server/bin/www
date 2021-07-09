@@ -10,8 +10,8 @@ var debug = require('debug')('template:server');
 var http = require('http');
 var https = require('https');
 
-var privateKey  = fs.readFileSync('../example.key', 'utf8');
-var certificate = fs.readFileSync('../example.crt', 'utf8');
+var privateKey  = fs.readFileSync('/etc/letsencrypt/live/tudorflix.wolseley-charles.co.uk/privkey.pem', 'utf8');
+var certificate = fs.readFileSync('/etc/letsencrypt/live/tudorflix.wolseley-charles.co.uk/fullchain.pem', 'utf8');
 
 var credentials = {key: privateKey, cert: certificate};
 
