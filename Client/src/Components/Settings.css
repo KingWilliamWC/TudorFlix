@@ -6,13 +6,13 @@
 #titleContainer{
     color: white;
     margin-top: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 #userProfileContainer{
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 #userSettingsProfileImage{
@@ -32,19 +32,32 @@
     display: none;
 }
 
-#userSettingsProfileName{
+.userSettingsProfileName{
     color: white;
     font-size: 21px;
     font-family: Bold;
     margin-right: 10px;
     background: none;
     border: none;
+    outline: none;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.userSettingsProfileNameEdit{
+    border: 1.5px solid rgba(255, 255, 255, 0.205);
+    border-radius: 2px;
 }
 
 .settingsValueInput{
     background: none;
     border: none;
+    outline: none;
     text-align: right;
+}
+
+.InputEdit{
+    border: 1.5px solid rgba(255, 255, 255, 0.205);
 }
 
 .userEditButton{
@@ -81,6 +94,8 @@
     color: white;
     font-size: 18px;
     margin-left: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 /* .settingsValue:not(:first-of-type){
@@ -138,19 +153,88 @@ input[type=checkbox]:checked::before{
     display: flex;
 }
 
+.InfoContainer{
+    width: 450px;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    
+    border-radius: 5px;
+    user-select: none;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all 0.01s;
+    color: white;
+}
 
+.errorContainer{
+    border: 1px solid #F54049;
+    display: flex;
+    user-select:auto;
+}
 
-@media only screen and (max-width: 1000px) {
+.successContainer{
+    border: 1px solid #6DD890;
+    display: flex;
+    user-select:auto;
+}
+#genreEditFlexContainer{
+    display: contents;
+}
+
+@media only screen and (max-width: 850px) {
     #mainSettingsContainer{
         margin: 0 auto;
         width: fit-content;
     }
 
-    #accountSettingsTitle{
-        text-align: center;
+    #SettingsTab{
+        width: fit-content;
+        margin: 0 auto;
+    }
+    .mainSettingsContainer{
+        width: 450px;
     }
 
     #saveBtn{
         margin: 30px auto 0 auto;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .mainSettingsContainer{
+        width: 100%;
+    }
+
+    .settingsItem{
+        display: block;
+    }
+
+    #SettingsTab{
+        margin: 0;
+        padding-left: 20px;
+    }
+    
+    .settingsValueInput{
+        text-align: left;
+    }
+
+    .settingsValue, #userIncludeAdultBox{
+        margin-top: 10px;
+    }
+    .settingsItem:not(:first-of-type){
+        margin-top: 30px;
+    }
+
+    .InfoContainer{
+        width: 370px;
+    }
+
+    #genreEditFlexContainer{
+        display: flex;
+        width: fit-content;
+        align-items: baseline;
     }
 }

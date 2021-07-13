@@ -109,6 +109,13 @@ class Settings extends Component{
             mainSettingsClass: ['mainSettingsContainer', 'mainSettingsContainer mainSettingsContainerHide'],
             buttonSaveClass: ['saveBtn', 'saveBtn saveBtnHide'],
             mainSettingsState: 0,
+            InputClasses: ['settingsValue settingsValueInput', 'settingsValue settingsValueInput InputEdit'],
+            UsernameInputClasses: ['userSettingsProfileName', 'userSettingsProfileName userSettingsProfileNameEdit'],
+            InputStates: [0, 0],
+            InfoClass: ['InfoContainer', 'InfoContainer errorContainer', 'InfoContainer successContainer'],
+            InfoState: 0,
+            InfoTitle: '',
+            InfoMessage: '',
         }
     }
     
@@ -121,7 +128,7 @@ class Settings extends Component{
             genreStyleClassesToAdd.push('genreContainer');
         }
         for(var i = 0; i < this.props.user.genres.length; i++){
-            for(var x = 0; x < this.state.genreMap.genres.length; x++){
+            for(x = 0; x < this.state.genreMap.genres.length; x++){
                 if(this.state.genreMap.genres[x].id === this.props.user.genres[i]){
                     genresToMap.push(this.state.genreMap.genres[x].name);
                 }
@@ -134,7 +141,7 @@ class Settings extends Component{
             }
         }
         console.log(currentGenreArray);
-        document.getElementById('userSettingsProfileName').value = this.props.user.username;
+        document.getElementsByClassName('userSettingsProfileName')[0].value = this.props.user.username;
         document.getElementById('userIncludeAdultBox').checked = this.props.user.includeadult;
         document.getElementsByClassName('settingsValueInput')[0].value = this.props.user.email;
         this.setState({gennresMapped: genresToMap, genreClasses: genreStyleClassesToAdd, currentSelectedGenres: currentGenreArray});
@@ -158,18 +165,26 @@ class Settings extends Component{
 
     userBlurField = (index) => {
         var currentStates = this.state.readOnlyStates;
+        var currentInputStates = this.state.InputStates;
         currentStates[index] = true;
-        this.setState({readOnlyStates: currentStates});
+        currentInputStates[index] = 0;
+        this.setState({readOnlyStates: currentStates, InputStates: currentInputStates});
     }
 
     userClickEdit = (index) =>{
         var currentStates = this.state.readOnlyStates;
+        var currentInputStates = this.state.InputStates;
+        if(currentInputStates[index] === 0){
+            currentInputStates[index] = 1;
+        }else{
+            currentInputStates[index] = 0;
+        }
         if(currentStates[index] === true){
             currentStates[index] = false;
         }else{
             currentStates[index] = true; //user finished with editing
         }
-        this.setState({readOnlyStates: currentStates});
+        this.setState({readOnlyStates: currentStates, InputStates: currentInputStates});
     }
     userSubmitSurvey = () =>{
         if(this.state.currentSelectedGenres.length >= 1){
@@ -189,23 +204,43 @@ class Settings extends Component{
     }
 
     userEditGenres = () =>{
-        this.setState({genreSelectState: 1, mainSettingsState: 1});
+        this.setState({InfoState: 0,genreSelectState: 1, mainSettingsState: 1});
     }
 
     async sendUserSavedata(saveData){
         await axios.post(this.props.routes.update, {saveData})
             .then(res => {
-                localStorage.removeItem('username');
-                localStorage.setItem('username', JSON.stringify(res.data));
+                if(res.data.status === 'success'){ //success updating
+                    localStorage.removeItem('username');
+                    localStorage.setItem('username', JSON.stringify(res.data.message));
+                    this.setState({InfoState: 2, InfoTitle: 'Success', InfoMessage: 'Successfully updated account settings'});
+                }else{ //failure updating
+                    
+                }
             })
     }
 
+    validateEmail = (email) => {
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; // eslint-disable-line
+        return re.test(email);
+    }
+
     userSave = () =>{
-        var currentUser = this.state.currentUser;
-        currentUser.username = document.getElementById('userSettingsProfileName').value;
+        this.setState({InfoState: 0, InfoTitle: '', InfoMessage: ''}); // reset info table
+        var currentUser = JSON.parse((localStorage.getItem('username')));
+        currentUser.username = document.getElementsByClassName('userSettingsProfileName')[0].value;
+        if(currentUser.username.length < 3){
+            this.setState({InfoState: 1, InfoTitle: 'Error', InfoMessage: 'Please Set A Username longer than 3 characters'});
+            return;
+        }
         currentUser.includeadult = document.getElementById('userIncludeAdultBox').checked;
         currentUser.email = document.getElementsByClassName('settingsValueInput')[0].value;
+        if(!this.validateEmail(currentUser.email)){
+            this.setState({InfoState: 1, InfoTitle: 'Error', InfoMessage: 'Please Enter a valid Email adress'});
+            return;
+        }
         currentUser.genres = this.state.currentSelectedGenres;
+
         this.setState({currentUser: currentUser});
         this.sendUserSavedata(currentUser)
     }
@@ -216,16 +251,20 @@ class Settings extends Component{
                 <div id='titleContainer'>
                     <p id='accountSettingsTitle'>Account Settings</p>
                 </div>
+                <div className={this.state.InfoClass[this.state.InfoState]}>
+                        <p id='errorTitle'>{this.state.InfoTitle}</p>
+                        <p>{this.state.InfoMessage}</p>
+                </div>
                 <div className={this.state.mainSettingsClass[this.state.mainSettingsState]}>
                     <div id='userProfileContainer'>
                         <img alt='' id='userSettingsProfileImage' src={UserImage}></img>
-                        <input readOnly={this.state.readOnlyStates[0]} type='text' onBlur={() => this.userBlurField(0)} id='userSettingsProfileName'></input>
+                        <input readOnly={this.state.readOnlyStates[0]} type='text' onBlur={() => this.userBlurField(0)} className={this.state.UsernameInputClasses[this.state.InputStates[0]]}></input>
                         <img onClick={() => this.userClickEdit(0)} className='userEditButton' alt='' src={EditSVG}></img>
                     </div>
                     <div id='userInfoSettingsContainer'>
                         <div className='settingsItem'>
                             <p className='settingsTitle'>Email:</p>
-                            <input onBlur={() => this.userBlurField(1)} readOnly={this.state.readOnlyStates[1]} className='settingsValue settingsValueInput'></input>
+                            <input onBlur={() => this.userBlurField(1)} readOnly={this.state.readOnlyStates[1]} className={this.state.InputClasses[this.state.InputStates[1]]}></input>
                             <img onClick={() => this.userClickEdit(1)} className='userEditButton mainEdit' alt='' src={EditSVG}></img>
                         </div>
                         <div className='settingsItem'>
@@ -234,8 +273,10 @@ class Settings extends Component{
                         </div>
                         <div className='settingsItem'>
                             <p className='settingsTitle'>Interests:</p>
-                            <p className='settingsValue'>{this.state.gennresMapped.join(', ')}</p>
-                            <img onClick={() => this.userEditGenres()} className='userEditButton mainEdit' alt='' src={EditSVG}></img>
+                            <div id='genreEditFlexContainer'>
+                                <p className='settingsValue'>{this.state.gennresMapped.join(', ')}</p>
+                                <img onClick={() => this.userEditGenres()} className='userEditButton mainEdit' alt='' src={EditSVG}></img>
+                            </div>
                         </div>
                         <div className='settingsItem'>
                             <p className='settingsTitle'>Include Adult:</p>

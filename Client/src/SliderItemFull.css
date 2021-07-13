@@ -1,0 +1,60 @@
+.moviesRowFullContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+
+.sliderItemFull{
+    width: 270px;
+    height: 406px;
+    position: relative;
+    margin-right: 20px;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+.sliderItemContentFull{
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.sliderItemContentFull:hover .movieOverlayContainerFull{
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.61);
+}
+
+.sliderImgFull{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+}
+.movieOverlayContainerFull {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    opacity: 0;
+    color: white;
+    transition: all 0.1s ease;
+}
+
+.movieOverlayContainerFull p {
+    text-align: center;
+}
+
+.movieTitleFull{
+    font-size: 1.4vw;
+    width: 80%;
+    margin-bottom: 5px;
+    margin: 0 auto;
+    margin-top: 5px;
+    font-family: Bold;
+}

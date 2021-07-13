@@ -79,10 +79,7 @@ class MoviesHome extends Component {
                 this.setState({isOpen: 0});
             }
         }
-
     }
-
-    // shouldComponentUpdate() {if(this.state.allowRender === true){return true;}else{return false;} }
     render(){
         return(
             <div id='moviesContainer'>
@@ -166,7 +163,7 @@ class MoviesHome extends Component {
                         {this.state.Trending != null ? <MoviesRow clickHandler={this.handleMovieClick} name={'Trending'} index={1} movies={this.state.Trending}/> : ''}
                     </div>
                 </div>
-                {this.state.isOpen ? <MovieSlideUp data={this.state.currentMovieData.data[0]} clickHandler={this.handleMovieClick} slideupClass={this.state.slideUpClass[this.state.isOpen]}/> : ''}
+                {this.state.isOpen ? <MovieSlideUp routes={this.props.routes} data={this.state.currentMovieData.data[0]} favouritesHandler={this.handleFavouritesClick} clickHandler={this.handleMovieClick} slideupClass={this.state.slideUpClass[this.state.isOpen]}/> : ''}
                 
             </div>
         )

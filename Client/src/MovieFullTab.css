@@ -104,7 +104,7 @@
     margin-top: 20px;
 }
 
-#movieFullInfoLikeButton{
+.movieFullInfoLikeButton{
     width: fit-content;
     height: 20px;
     background-color: rgba(255, 255, 255, 0.1);
@@ -114,12 +114,18 @@
     margin-right: 10px;
 }
 
-#movieFullInfoLikeButton img {
+.movieFullInfoLikeButton img {
     width: 20px;
     height: 20px;
+    filter: invert(17%) sepia(8%) saturate(711%) hue-rotate(195deg) brightness(60%) contrast(92%);
+    transition: all 0.1s;
 }
 
-#movieFullInfoPlayButton{
+.movieFullInfoLikeButtonLiked img {
+    filter: invert(32%) sepia(96%) saturate(1349%) hue-rotate(331deg) brightness(96%) contrast(99%);
+}
+
+.movieFullInfoPlayButton{
     width: fit-content;
     height: 20px;
     background-color: rgba(255, 255, 255, 0.1);
@@ -130,30 +136,26 @@
     margin-right: 10px;
 }
 
-#movieFullInfoLikeButton img {
-    filter: invert(17%) sepia(8%) saturate(711%) hue-rotate(195deg) brightness(91%) contrast(92%);
-}
-
-#movieFullInfoPlayButton img {
+.movieFullInfoPlayButton img {
     width: 20px;
     height: 20px;
     filter: invert(97%) sepia(44%) saturate(1276%) hue-rotate(62deg) brightness(90%) contrast(85%);
 
 }
 
-#movieFullInfoPlayButton p {
+.movieFullInfoPlayButton p {
     margin-right: 10px;
     color: white;
 }
 
 
 
-#movieFullInfoLikeButton, #movieFullInfoPlayButton{
+.movieFullInfoLikeButton, .movieFullInfoPlayButton{
     transition: all 0.2s ease;
     font-size: 17px;
 }
 
-#movieFullInfoLikeButton:hover, #movieFullInfoPlayButton:hover{
+.movieFullInfoLikeButton:hover, .movieFullInfoPlayButton:hover{
     background-color: rgba(255, 255, 255, 0.12);
 }
 

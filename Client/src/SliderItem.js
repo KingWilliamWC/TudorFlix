@@ -19,7 +19,7 @@ class SliderItem extends Component {
                     <div className='movieOverlayContainer'>
                         <div className='movieOverlayContainerContent'>
                             <p className='movieTitle'>{this.props.info.title}</p>
-                            <p>{this.props.info.release_date.substring(0,4)}</p>
+                            <p>{this.props.info.release_date ? this.props.info.release_date.substring(0,4) : ''}</p>
                         </div>
                     </div>
                 </div>

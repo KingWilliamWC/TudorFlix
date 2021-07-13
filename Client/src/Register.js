@@ -23,7 +23,7 @@ class Register extends Component {
             username: '',
             password: '',
             email: '',
-            errorID: ['errorSubmissionContainer', 'errorSubmissionContainer show'],
+            errorClass: ['errorSubmissionContainer', 'errorSubmissionContainer show'],
             errorState: 0,
             errorMessage: '',
             isSigningUp: false,
@@ -72,7 +72,7 @@ class Register extends Component {
     }
 
     validateEmail = (email) => {
-        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; // eslint-disable-line
         return re.test(email);
     }
 
@@ -157,7 +157,7 @@ class Register extends Component {
                 <div className={this.state.loginClass[this.state.loginClassState]}>
                     <p id='loginTitle'>{this.state.pageContent[this.state.pageContentState].title}</p>
                     <p id='sublogintitle'>{this.state.pageContent[this.state.pageContentState].subtitle}</p>
-                    <div className={this.state.errorID[this.state.errorState]}>
+                    <div className={this.state.errorClass[this.state.errorState]}>
                         <p id='errorTitle'>Error</p>
                         <p>{this.state.errorMessage}</p>
                     </div>

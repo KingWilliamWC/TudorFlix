@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import axios from 'axios';
 
 import './MovieFullTab.css';
 
@@ -95,6 +96,9 @@ class MovieFullTab extends Component {
             genres: [],
             video: false,
             key: '',
+            heartClass: ['movieFullInfoLikeButton', 'movieFullInfoLikeButton movieFullInfoLikeButtonLiked'],
+            heartState: 0,
+            movieIDIndex: 0,
         }
     }
 
@@ -107,7 +111,13 @@ class MovieFullTab extends Component {
                 }
             }
         }
-        this.setState({genres: genresToMap});
+        if(JSON.parse((localStorage.getItem('username'))).favouritesID.includes(this.props.data.id)){
+            var movieIDIndex = JSON.parse((localStorage.getItem('username'))).favouritesID.indexOf(this.props.data.id, 0)
+            this.setState({genres: genresToMap, heartState: 1, movieIDIndex: movieIDIndex});
+        }else{
+            this.setState({genres: genresToMap});
+        }
+        
     }
     
     userPlay = () => {
@@ -124,6 +134,41 @@ class MovieFullTab extends Component {
 
     userExitPlay = () => {
         this.setState({video: false});
+    }
+
+    HandleLikeClick = () => {
+        var user = JSON.parse((localStorage.getItem('username')));      
+        if(this.state.heartState === 0){
+            this.setState({heartState: 1});
+            // user add to favourites
+            user.favourites.push(this.props.data);
+            user.favouritesID.push(this.props.data.id);
+            localStorage.setItem('username', JSON.stringify(user));
+            axios.post(this.props.routes.update, {saveData: user})
+            .then(res => {
+                if(res.data.status === 'success'){ //success updating
+                    localStorage.removeItem('username');
+                    localStorage.setItem('username', JSON.stringify(res.data.message));
+                }else{ //failure updating
+                    
+                }
+            })
+        }else{
+            this.setState({heartState: 0});
+            // user delete from favourites
+            user.favourites.splice(this.state.movieIDIndex, 1);
+            user.favouritesID.splice(this.state.movieIDIndex, 1);
+            localStorage.setItem('username', JSON.stringify(user));
+            axios.post(this.props.routes.update, {saveData: user})
+            .then(res => {
+                if(res.data.status === 'success'){ //success updating
+                    localStorage.removeItem('username');
+                    localStorage.setItem('username', JSON.stringify(res.data.message));
+                }else{ //failure updating
+                    
+                }
+            })
+        }
     }
     render(){
         return(
@@ -160,10 +205,10 @@ class MovieFullTab extends Component {
                                         <p>{this.props.data.overview}</p>
                                     </div>
                                     <div id='movieFullInfoButtonsContainer'>
-                                        <div id='movieFullInfoLikeButton'>
+                                        <div onClick={() => this.HandleLikeClick()} className={this.state.heartClass[this.state.heartState]}>
                                             <img alt='' src={HeartSVG}></img>
                                         </div>
-                                        <div onClick={() => this.userPlay()} id='movieFullInfoPlayButton'>
+                                        <div onClick={() => this.userPlay()} className='movieFullInfoPlayButton'>
                                             <p>Watch</p>
                                             <img alt='' src={PlaySVG}></img>
                                         </div>

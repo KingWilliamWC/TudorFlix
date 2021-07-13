@@ -1,0 +1,28 @@
+#favouritesTitle{
+    color: white;
+    font-family: Bold;
+    font-size: 23px;
+    margin-bottom: 25px;
+}
+
+#FavouritesTab{
+    padding-right: 40px;
+    padding-top: 30px;
+}
+
+#nullMoviesTitle{
+    color: white;
+    margin-top: 30px;
+    font-size: 23px;
+    font-family: Bold;
+}
+
+@media only screen and (max-width: 1400px) {
+    
+}
+
+@media only screen and (max-width: 600px) {
+    #nullMoviesTitle{
+        font-size: 20px;
+    }
+}

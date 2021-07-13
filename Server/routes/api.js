@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema({
   genres: Array,
   includeadult: Boolean,
   favourites: Array,
+  favouritesID: Array,
 });
 
 const User = mongoose.model('User', userSchema);
@@ -51,10 +52,10 @@ const GetAPI = async (paths, res) => {
 
 router.post('/updateaccount', function(req, res, next){
   console.log(req.body.saveData);
-  User.findByIdAndUpdate(mongoose.Types.ObjectId(req.body.saveData._id), {username: req.body.saveData.username, password: req.body.saveData.password, email: req.body.saveData.email, genres: req.body.saveData.genres, includeadult: req.body.saveData.includeadult}, {new: true}, function (err, newUser){
+  User.findByIdAndUpdate(mongoose.Types.ObjectId(req.body.saveData._id), {username: req.body.saveData.username, password: req.body.saveData.password, email: req.body.saveData.email, genres: req.body.saveData.genres, includeadult: req.body.saveData.includeadult, favourites: req.body.saveData.favourites, favouritesID: req.body.saveData.favouritesID}, {new: true}, function (err, newUser){
     if(!err){
       console.log(newUser);
-      res.json(newUser);
+      res.json({'status': 'success', 'message': newUser});
     }else{
       console.log(err);
       res.json({'status': 'failure','message': err});
@@ -116,7 +117,7 @@ router.post('/signup/', function(req, res, next){
   const currentUsers = User.find({username: req.body.username}, function (err, foundUsernames){
     if(!err){
      if(foundUsernames.length === 0){
-        const NewUser = new User({username: req.body.username, password: req.body.password, email: req.body.email, genres: req.body.genres, includeadult: true, favourites: []}).save(function (err, user){
+        const NewUser = new User({username: req.body.username, password: req.body.password, email: req.body.email, genres: req.body.genres, includeadult: true, favourites: [], favouritesID: []}).save(function (err, user){
           if(err){res.json({err: 'err'});res.end();}
           else{
             res.json({status: 'success', 'user': user});

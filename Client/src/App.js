@@ -20,7 +20,7 @@ class App extends Component {
     constructor(props){
         super(props);
         this.state={
-            app: [<MoviesHome routes={this.props.routes}/>, <Popular/>, <Discover/>, <Favourites/>, <WatchLater/>, <Settings routes={this.props.routes} user={JSON.parse((localStorage.getItem('username')))}/>],
+            app: [<MoviesHome routes={this.props.routes}/>, <Popular/>, <Discover/>, <Favourites routes={this.props.routes}/>, <WatchLater/>, <Settings routes={this.props.routes} user={JSON.parse((localStorage.getItem('username')))}/>],
             appState: 0,
             user: JSON.parse((localStorage.getItem('username'))),
             genreMap: {"genres": [
