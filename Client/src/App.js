@@ -20,7 +20,7 @@ class App extends Component {
     constructor(props){
         super(props);
         this.state={
-            app: [<MoviesHome routes={this.props.routes}/>, <Popular/>, <Discover/>, <Favourites routes={this.props.routes}/>, <WatchLater/>, <Settings routes={this.props.routes} user={JSON.parse((localStorage.getItem('username')))}/>],
+            app: [<MoviesHome HandleTabClick={this.HandleTabClick} routes={this.props.routes}/>, <Popular routes={this.props.routes}/>, <Discover routes={this.props.routes}/>, <Favourites routes={this.props.routes}/>, <WatchLater/>, <Settings routes={this.props.routes} signoutHandler={this.SignUserOut} user={JSON.parse((localStorage.getItem('username')))}/>],
             appState: 0,
             user: JSON.parse((localStorage.getItem('username'))),
             genreMap: {"genres": [
@@ -101,20 +101,44 @@ class App extends Component {
                   "name": "Western"
                 }
               ]
-            }
+            },
+            buttonStates: [],
+            currentButtonIndex: 0,
         }
+    }
+
+    componentDidMount(){
+      var buttonsStatesToAdd = []
+      for(var i = 0; i < 6; i++){
+          buttonsStatesToAdd.push('sideButton');
+      }
+      buttonsStatesToAdd[0] = 'sideButton sideButtonActive';
+      this.setState({
+          buttonStates: buttonsStatesToAdd
+      })
     }
     
     HandleTabClick = (index) =>{
-        this.setState({appState: index});
+      if(index !== this.state.currentButtonIndex){
+        var tempButtonState = this.state.buttonStates;
+        tempButtonState[index] = 'sideButton sideButtonActive';
+        tempButtonState[this.state.currentButtonIndex] = 'sideButton';
+        this.setState({buttonStates: tempButtonState, currentButtonIndex: index});
+      }
+      this.setState({appState: index});
+      }
+
+    SignUserOut = () => {
+        localStorage.removeItem('username');
+        window.location.replace(this.props.routes.signPage);
     }
     
     render(){
         return(
             <div id='app'>
-                <Sidebar HandleTabClick={this.HandleTabClick}/>
+                <Sidebar buttonStates={this.state.buttonStates} currentButtonIndex={this.state.currentButtonIndex} HandleTabClick={this.HandleTabClick}/>
                 <div id='mainContent'>
-                    {this.state.appState === 5? '' : <Bartop />}
+                    {this.state.appState === 5? '' : <Bartop signoutHandler={this.SignUserOut} HandleTabClick={this.HandleTabClick} />}
                     {this.state.app[this.state.appState]}
                 </div>
             </div>

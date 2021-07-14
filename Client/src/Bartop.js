@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState, useRef } from 'react';
 
 import './Bartop.css';
 
@@ -13,6 +13,9 @@ class Bartop extends Component {
         this.state = {
             buttonStates: [],
             currentButtonIndex: 0,
+            userDropDownClasses: ['dropdown-content-hide', 'dropdown-content-hide dropdown-content'],
+            userDropDownState: 0,
+            
         }
     }
 
@@ -25,8 +28,18 @@ class Bartop extends Component {
         this.setState({
             buttonStates: buttonsStatesToAdd
         })
+
+        const concernedElement = document.getElementsByClassName('dropdown-content-hide')[0]
+        document.addEventListener("mousedown", (event) => {
+            if (!concernedElement.contains(event.target)) {
+                if(this.state.userDropDownState === 1){
+                    this.setState({userDropDownState: 0});
+                    console.log('hide');
+                }
+            }
+        });
     }
-// 2x = 10
+
     HandleButtonClick(senderIndex){
         if(senderIndex !== this.state.currentButtonIndex){
             var tempButtonState = this.state.buttonStates;
@@ -35,6 +48,25 @@ class Bartop extends Component {
             this.setState({buttonStates: tempButtonState, currentButtonIndex: senderIndex})
         }
 
+    }
+
+    handleClickOutside = () => {
+        console.log('click outside');
+        if(!this.state.userDropDownState === 0){
+            this.setState({userDropDownState: 0});
+        }
+    }
+
+    OnUserClickProfile = () => {
+        if(this.state.userDropDownState === 0){
+            this.setState({userDropDownState: 1});
+        }else{
+            this.setState({userDropDownState: 0});
+        }
+    }
+
+    handleDropDownClick = (index) => {
+        index === 0 ? this.props.HandleTabClick(5) : this.props.signoutHandler();
     }
     render(){
         return(
@@ -54,7 +86,18 @@ class Bartop extends Component {
                 </div>
                 <div id='userContainer'>
                     <img alt='' id='userBell' src={BellSVG}></img>
-                    <img id='userImg' alt='' src={UserPicture}></img>
+                    <img  onClick={() => this.OnUserClickProfile()} id='userImg' alt='' src={UserPicture}></img>
+                    <div  class={this.state.userDropDownClasses[this.state.userDropDownState]}>
+                        <div className='userNameContainer'>
+                            <p className='userDropDownName'>{JSON.parse((localStorage.getItem('username'))).username}</p>
+                        </div>
+                        <div onClick={() => this.handleDropDownClick(0)} className='dropdownOption'>
+                            <p>Settings</p>
+                        </div>
+                        <div onClick={() => this.handleDropDownClick(1)} className='dropdownOption'>
+                            <p>Sign Out</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

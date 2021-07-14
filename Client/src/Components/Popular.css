@@ -1,0 +1,18 @@
+#PopularTab{
+    padding-top: 30px;
+}
+
+#viewMoreButton {
+    text-align: center;
+    color: white;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.popularTitle{
+    color: white;
+    font-family: Bold;
+    font-size: 23px;
+    margin-bottom: 20px;
+}

@@ -11,11 +11,14 @@ class AppRouter extends Component {
         var routes = {
             'signin': `${urlBase}/api/signin`,
             'signup': `${urlBase}/api/signup`,
+            'signPage': `https://tudorflix.wolseley-charles.co.uk/`,
             'isUser': `${urlBase}/api/isUser`,
             'update': `${urlBase}/api/updateaccount`,
             'home': `https://tudorflix.wolseley-charles.co.uk/app`,
             'moviehome': `${urlBase}/api/home`,
             'movie': `${urlBase}/api/movie/?`,
+            'popular': `${urlBase}/api/popular`,
+            'discover': `${urlBase}/api/discover`,
         }
         return(
             <Router>
