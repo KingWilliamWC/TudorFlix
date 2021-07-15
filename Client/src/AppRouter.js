@@ -19,6 +19,7 @@ class AppRouter extends Component {
             'movie': `${urlBase}/api/movie/?`,
             'popular': `${urlBase}/api/popular`,
             'discover': `${urlBase}/api/discover`,
+            'search': `${urlBase}/api/search`,
         }
         return(
             <Router>

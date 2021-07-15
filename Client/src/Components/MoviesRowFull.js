@@ -13,6 +13,7 @@ class MoviesRowFull extends Component {
         }
     }
     render(){
+        console.log(this.props.favourites);
         this.state.MovieItems = []
         for(var i = 0; i < this.props.favourites.length; i++){
             this.state.MovieItems.push(

@@ -9,6 +9,7 @@
 #contentSelector{
     display: flex;
     margin-right: 10vw;
+    align-items: center;
 }
 
 #seperator{
@@ -21,6 +22,7 @@
 .contentOption{
     cursor:pointer;
     transition: all 0.08s;
+    width: max-content;
 }
 
 .contentOption p {
@@ -39,18 +41,20 @@
 
 #searchContainer{
     display: flex;
+    width: 130%;
+    position: relative;
 }
 
 #searchIcon{
     width: 20px;
-    position: relative;
-    left: 30px;
+    position: absolute;
+    margin: 10px;
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(30%) contrast(103%);
 }
 
 #searchBox{
     height: 35px;
-    width: 420px;
+    width: 100%;
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(0, 0, 255, 0);
     border-radius: 7px;
@@ -60,6 +64,7 @@
     padding-left: 40px;
     padding-right: 10px;
     transition: all 0.1s;
+    position: relative;
 }
 
 #searchBox:focus{
@@ -69,6 +74,75 @@
 
 .dropdown-content-hide {
     display: none;
+}
+
+#searchContainerContent{
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.searchResultsContent{
+}
+
+.searchResultsContainerHide{
+    display: none;
+}
+
+#NullResultsText{
+    color: white;
+    margin: 10px;
+}
+
+.searchResultsContainer {
+    max-height: 250px;
+    overflow: hidden;
+    overflow-y: scroll;
+    display: block;
+    width: 90.7%;
+    box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
+    z-index: 500;
+    background-color: #333439;
+    border-radius: 3px;
+    border: 1px solid #3c3d42;
+    position: absolute;
+    top: 38px;
+}
+
+
+
+.searchResultsContainer::-webkit-scrollbar{
+    display: none;
+}
+
+.searchResultItem{
+    height: 75px;
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+    background-color: #333439;
+    cursor: pointer;
+}
+
+.searchResultItemContent{
+    margin-left: 10px;
+    display: flex;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.searchResultItem:hover{
+    background-color: #404147;
+}
+
+.searchResultItem p {
+    color: white;
+    margin-left: 10px;
+}
+
+.searchResultItemImage{
+    height: 100%;
 }
 
 .dropdown-content {
@@ -153,13 +227,13 @@
         margin-right: 20px;
     }
 
-    #searchBox{
+    /* #searchBox{
         width: 250px;
-    }
+    } */
 }
 
 @media only screen and (max-width: 450px) {
-    #searchBox{
+    /* #searchBox{
         width: 190px;
-    }
+    } */
 }

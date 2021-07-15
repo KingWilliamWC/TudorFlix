@@ -10,21 +10,7 @@ import RewindSVG from './SVG/Rewind-Solid.svg';
 import OptionSVG from './SVG/Option-Solid.svg';
 
 class Sidebar extends Component {
-    constructor(props){
-        super(props);
-    }
-
-    componentDidMount(){
-        var buttonsStatesToAdd = []
-        for(var i = 0; i < 6; i++){
-            buttonsStatesToAdd.push('sideButton');
-        }
-        buttonsStatesToAdd[0] = 'sideButton sideButtonActive';
-        this.setState({
-            buttonStates: buttonsStatesToAdd
-        })
-    }
-    
+   
     HandleButtonClick(senderIndex){
         this.props.HandleTabClick(senderIndex);
     }

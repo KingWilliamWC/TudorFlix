@@ -80,6 +80,10 @@ class MoviesHome extends Component {
             }
         }
     }
+
+    OnUserSeeMore = (name) => {
+        name === 'For You' ? this.props.HandleTabClick(2) : this.props.HandleTabClick(1)
+    }
     render(){
         return(
             <div id='moviesContainer'>
@@ -159,8 +163,8 @@ class MoviesHome extends Component {
                 </div>
                 <div className='rowsContainer'>
                     <div className='rowContent'>
-                        {this.state.Trending != null ? <MoviesRow clickHandler={this.handleMovieClick} name={'For You'} index={0} movies={this.state.ForYou}/> : ''}
-                        {this.state.Trending != null ? <MoviesRow clickHandler={this.handleMovieClick} name={'Trending'} index={1} movies={this.state.Trending}/> : ''}
+                        {this.state.Trending != null ? <MoviesRow SeeMoreHandler={this.OnUserSeeMore} clickHandler={this.handleMovieClick} name={'For You'} index={0} movies={this.state.ForYou}/> : ''}
+                        {this.state.Trending != null ? <MoviesRow SeeMoreHandler={this.OnUserSeeMore} clickHandler={this.handleMovieClick} name={'Trending'} index={1} movies={this.state.Trending}/> : ''}
                     </div>
                 </div>
                 {this.state.isOpen ? <MovieSlideUp routes={this.props.routes} data={this.state.currentMovieData.data[0]} favouritesHandler={this.handleFavouritesClick} clickHandler={this.handleMovieClick} slideupClass={this.state.slideUpClass[this.state.isOpen]}/> : ''}

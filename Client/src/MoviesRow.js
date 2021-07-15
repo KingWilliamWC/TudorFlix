@@ -35,7 +35,7 @@ class MoviesRow extends Component {
                     <div className='movieRowTitleContainer'>
                         <p className='movieRowTitle'>{this.props.name}</p>
                     </div>
-                    <div className='viewAllButtonContainer'>
+                    <div onClick={() => this.props.SeeMoreHandler(this.props.name)} className='viewAllButtonContainer'>
                         <p>See More</p>
                     </div>
                     <div className='buttonSlideContainer'>

@@ -138,7 +138,7 @@ class App extends Component {
             <div id='app'>
                 <Sidebar buttonStates={this.state.buttonStates} currentButtonIndex={this.state.currentButtonIndex} HandleTabClick={this.HandleTabClick}/>
                 <div id='mainContent'>
-                    {this.state.appState === 5? '' : <Bartop signoutHandler={this.SignUserOut} HandleTabClick={this.HandleTabClick} />}
+                    {this.state.appState === 5? '' : <Bartop routes={this.props.routes} signoutHandler={this.SignUserOut} HandleTabClick={this.HandleTabClick} />}
                     {this.state.app[this.state.appState]}
                 </div>
             </div>

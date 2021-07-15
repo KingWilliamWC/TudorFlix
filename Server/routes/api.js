@@ -50,6 +50,11 @@ const GetAPI = async (paths, res) => {
   res.end();
 }
 
+router.post('/search', function(req, res, next){
+  paths = [`/search/movie?api_key=7c564bf98c4e72a69dbe7ed063ae47dc&language=en-US&query=${req.body.searchQuery}&page=1&include_adult=false`]
+  GetAPI(paths, res);
+})
+
 router.post('/updateaccount', function(req, res, next){
   console.log(req.body.saveData);
   User.findByIdAndUpdate(mongoose.Types.ObjectId(req.body.saveData._id), {username: req.body.saveData.username, password: req.body.saveData.password, email: req.body.saveData.email, genres: req.body.saveData.genres, includeadult: req.body.saveData.includeadult, favourites: req.body.saveData.favourites, favouritesID: req.body.saveData.favouritesID}, {new: true}, function (err, newUser){

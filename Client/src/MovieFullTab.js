@@ -99,6 +99,7 @@ class MovieFullTab extends Component {
             heartClass: ['movieFullInfoLikeButton', 'movieFullInfoLikeButton movieFullInfoLikeButtonLiked'],
             heartState: 0,
             movieIDIndex: 0,
+            userAlreadyLiked: [false, false],
         }
     }
 
@@ -113,6 +114,7 @@ class MovieFullTab extends Component {
         }
         if(JSON.parse((localStorage.getItem('username'))).favouritesID.includes(this.props.data.id)){
             var movieIDIndex = JSON.parse((localStorage.getItem('username'))).favouritesID.indexOf(this.props.data.id, 0)
+            console.log(movieIDIndex, this.props.data.id);
             this.setState({genres: genresToMap, heartState: 1, movieIDIndex: movieIDIndex});
         }else{
             this.setState({genres: genresToMap});
@@ -137,10 +139,12 @@ class MovieFullTab extends Component {
     }
 
     HandleLikeClick = () => {
-        var user = JSON.parse((localStorage.getItem('username')));      
-        if(this.state.heartState === 0){
+        var user = JSON.parse((localStorage.getItem('username')));
+         
+        if(this.state.heartState === 0 && !user.favouritesID.includes(this.props.data.id)){
             this.setState({heartState: 1});
             // user add to favourites
+            console.log('movie id on like change add: ' + this.props.data.id + ', ' + this.state.movieIDIndex);  
             user.favourites.push(this.props.data);
             user.favouritesID.push(this.props.data.id);
             localStorage.setItem('username', JSON.stringify(user));
@@ -149,21 +153,37 @@ class MovieFullTab extends Component {
                 if(res.data.status === 'success'){ //success updating
                     localStorage.removeItem('username');
                     localStorage.setItem('username', JSON.stringify(res.data.message));
+                    var alreadyLiked = this.state.userAlreadyLiked;
+                    alreadyLiked[0] = true;
+                    this.setState({userAlreadyLiked: alreadyLiked})
+                    console.log(this.state.userAlreadyLiked);
                 }else{ //failure updating
                     
                 }
             })
-        }else{
+        }else if(user.favouritesID.includes(this.props.data.id)){
             this.setState({heartState: 0});
+            var alreadyLiked = this.state.userAlreadyLiked;
+            alreadyLiked[1] = true;
+            this.setState({userAlreadyLiked: alreadyLiked})
+            console.log('movie id on like change remove: ' + this.props.data.id + ', ' + this.state.movieIDIndex); 
             // user delete from favourites
-            user.favourites.splice(this.state.movieIDIndex, 1);
-            user.favouritesID.splice(this.state.movieIDIndex, 1);
+            if(this.state.userAlreadyLiked[0] === true && this.state.userAlreadyLiked[1] === true){
+              user.favourites.splice(user.favourites.length - 1, 1);
+              user.favouritesID.splice(user.favouritesID.length - 1, 1);
+              console.log('not today buddy!!!');
+            }else{
+              user.favourites.splice(this.state.movieIDIndex, 1);
+              user.favouritesID.splice(this.state.movieIDIndex, 1);
+            }
+
             localStorage.setItem('username', JSON.stringify(user));
             axios.post(this.props.routes.update, {saveData: user})
             .then(res => {
                 if(res.data.status === 'success'){ //success updating
                     localStorage.removeItem('username');
                     localStorage.setItem('username', JSON.stringify(res.data.message));
+
                 }else{ //failure updating
                     
                 }
