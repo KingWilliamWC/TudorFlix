@@ -1,0 +1,9 @@
+15:
+	search box
+	user noties?
+	user profile image selection and settings change
+	Home featured actually works and not placeholder need a refferer from tab :(
+16:
+	fix scale and responsiveness
+	final push to git
+	Done!!!

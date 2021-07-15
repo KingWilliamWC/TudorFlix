@@ -126,7 +126,7 @@ class MoviesHome extends Component {
                             </div>
                         </div>
                         <div id='sideFeaturedMovies'>
-                            <div className='sideFeaturedMovie'>
+                            <div onClick={() => this.handleMovieClick(this.state.SideMovies[0].id)} className='sideFeaturedMovie'>
                                 {this.state.SideMovies[0] ? <img className='sideFeaturedMovieImg' alt='' src={`https://image.tmdb.org/t/p/w1280/${this.state.SideMovies[0].backdrop_path}`}></img> : ''} 
                                 <div className='SideFeatureMovieOverlayContainer'>
                                     <div className='SideFeatureMovieOverlayContainerContent'>
@@ -140,7 +140,7 @@ class MoviesHome extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className='sideFeaturedMovie'>
+                            <div onClick={() => this.handleMovieClick(this.state.SideMovies[1].id)} className='sideFeaturedMovie'>
                                 {this.state.SideMovies[1] ? <img className='sideFeaturedMovieImg' alt='' src={`https://image.tmdb.org/t/p/w1280/${this.state.SideMovies[1].backdrop_path}`}></img> : ''}
                                 <div className='SideFeatureMovieOverlayContainer'>
                                     <div className='SideFeatureMovieOverlayContainerContent'>
