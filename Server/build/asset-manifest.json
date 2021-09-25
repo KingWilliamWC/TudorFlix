@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.fa624a41.chunk.css",
-    "main.js": "/static/js/main.da9f572e.chunk.js",
-    "main.js.map": "/static/js/main.da9f572e.chunk.js.map",
+    "main.css": "/static/css/main.f5324b29.chunk.css",
+    "main.js": "/static/js/main.c8176bf5.chunk.js",
+    "main.js.map": "/static/js/main.c8176bf5.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.e07f9a2a.js",
     "runtime-main.js.map": "/static/js/runtime-main.e07f9a2a.js.map",
     "static/js/2.52060077.chunk.js": "/static/js/2.52060077.chunk.js",
     "static/js/2.52060077.chunk.js.map": "/static/js/2.52060077.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.fa624a41.chunk.css.map": "/static/css/main.fa624a41.chunk.css.map",
+    "static/css/main.f5324b29.chunk.css.map": "/static/css/main.f5324b29.chunk.css.map",
     "static/js/2.52060077.chunk.js.LICENSE.txt": "/static/js/2.52060077.chunk.js.LICENSE.txt",
     "static/media/Action-Solid.51d1f46c.svg": "/static/media/Action-Solid.51d1f46c.svg",
     "static/media/Adventure-Solid.82926197.svg": "/static/media/Adventure-Solid.82926197.svg",
@@ -33,7 +33,7 @@
   "entrypoints": [
     "static/js/runtime-main.e07f9a2a.js",
     "static/js/2.52060077.chunk.js",
-    "static/css/main.fa624a41.chunk.css",
-    "static/js/main.da9f572e.chunk.js"
+    "static/css/main.f5324b29.chunk.css",
+    "static/js/main.c8176bf5.chunk.js"
   ]
 }
